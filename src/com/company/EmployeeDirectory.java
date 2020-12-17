@@ -27,6 +27,16 @@ public class EmployeeDirectory {
         employee.setOffline();
     }
 
+    public Profile profileById(String employeeId) {
+        Profile foundProfile = null;
+
+        for (Employee employee : employees)
+            if (employee.getId().equals(employeeId))
+                foundProfile = employee.getProfile();
+
+        return foundProfile;
+    }
+
     public void updateEmployeeBio(Employee author, Employee target, String newBio) {
         try {
             if (author instanceof Manager) target.setProfile(new Profile(newBio));
