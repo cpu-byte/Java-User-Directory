@@ -11,6 +11,10 @@ public class Team {
     private String name;
     private List<String> members = new ArrayList<>();
 
+    public int numOfMembers() {
+        return this.members.size();
+    }
+
     public List<String> addMember(String uuid) {
         this.members.add(uuid);
         return members;
