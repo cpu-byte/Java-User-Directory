@@ -38,6 +38,10 @@ public class EmployeeDirectory {
 
     }
 
+    public int numOfEmployees() {
+        return this.employees.size();
+    }
+
     public List<Employee> addEmployee(Employee employee) {
         this.employees.add(employee);
         return employees;

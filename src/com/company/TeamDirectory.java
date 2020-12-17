@@ -7,6 +7,10 @@ public class TeamDirectory {
 
     private List<Team> teams;
 
+    public int numOfTeams() {
+        return this.teams.size();
+    }
+
     public List<Team> addTeam(Team team) {
         this.teams.add(team);
         return teams;
