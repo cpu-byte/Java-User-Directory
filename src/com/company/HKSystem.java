@@ -6,13 +6,13 @@ import java.util.List;
 public class HKSystem {
 
     private String name;
-    private EmployeeDirectory employeeDirectory;
-    private TeamDirectory teamDirectory;
+    private EmployeeDirectory empDir;
+    private TeamDirectory teamDir;
 
     public List<Team> employeeTeams(Employee employee) {
         var employeeTeams = new ArrayList<Team>();
 
-        for (Team team : this.teamDirectory.getTeams()) {
+        for (Team team : this.teamDir.getTeams()) {
             if (team.getMembers().contains(employee.getId()))
                 employeeTeams.add(team);
         }
@@ -23,7 +23,7 @@ public class HKSystem {
     public List<Employee> employeesInTeam(Team team) {
         var employeesInTeam = new ArrayList<Employee>();
 
-        for (Employee employee : this.employeeDirectory.getEmployees())
+        for (Employee employee : this.empDir.getEmployees())
             if (team.getMembers().contains(employee.getId())) employeesInTeam.add(employee);
 
         return employeesInTeam;
@@ -33,8 +33,8 @@ public class HKSystem {
     // standard encapsulation and override methods
 
     public HKSystem() {
-        this.employeeDirectory = new EmployeeDirectory();
-        this.teamDirectory = new TeamDirectory();
+        this.empDir = new EmployeeDirectory();
+        this.teamDir = new TeamDirectory();
     }
 
     public HKSystem(String name) {
@@ -43,8 +43,8 @@ public class HKSystem {
 
     public HKSystem(String name, EmployeeDirectory employeeDirectory, TeamDirectory teamDirectory) {
         this.name = name;
-        this.employeeDirectory = employeeDirectory;
-        this.teamDirectory = teamDirectory;
+        this.empDir = employeeDirectory;
+        this.teamDir = teamDirectory;
     }
 
     public String getName() {
@@ -56,27 +56,27 @@ public class HKSystem {
     }
 
     public EmployeeDirectory getEmployeeDirectory() {
-        return employeeDirectory;
+        return empDir;
     }
 
     public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
-        this.employeeDirectory = employeeDirectory;
+        this.empDir = employeeDirectory;
     }
 
     public TeamDirectory getTeamDirectory() {
-        return teamDirectory;
+        return teamDir;
     }
 
     public void setTeamDirectory(TeamDirectory teamDirectory) {
-        this.teamDirectory = teamDirectory;
+        this.teamDir = teamDirectory;
     }
 
     @Override
     public String toString() {
         return "HKSystem{" +
                 "name='" + name + '\'' +
-                ",\n employeeDirectory=" + employeeDirectory +
-                ",\n teamDirectory=" + teamDirectory +
+                ",\n employeeDirectory=" + empDir +
+                ",\n teamDirectory=" + teamDir +
                 '}';
     }
 }
