@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Date;
 
-import static com.company.Utility.uuid;
+import static com.company.Utility.uuidGenerate;
 
 public class Employee {
 
@@ -27,7 +27,7 @@ public class Employee {
     }
 
     public Employee(String name, String email, String password) {
-        this.id = uuid();
+        this.id = uuidGenerate();
         this.name = name;
         this.email = email;
         this.password = password;

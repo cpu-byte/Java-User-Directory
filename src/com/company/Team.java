@@ -3,11 +3,11 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.Utility.uuid;
+import static com.company.Utility.uuidGenerate;
 
 public class Team {
 
-    private final String id;
+    private String id;
     private String name;
     private List<String> members = new ArrayList<>();
 
@@ -30,12 +30,16 @@ public class Team {
     }
 
     public Team(String name) {
-        this.id = uuid();
+        this.id = uuidGenerate();
         this.name = name;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
