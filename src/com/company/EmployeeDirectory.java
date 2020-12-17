@@ -15,7 +15,7 @@ public class EmployeeDirectory {
                 if (employee.getEmail().equals(email) && employee.getPassword().equals(password))
                     foundEmployee = employee;
 
-            if (foundEmployee != null) foundEmployee.setOnline(true);
+            if (foundEmployee != null) foundEmployee.setOnline();
             else throw new Exception("Invalid Credentials");
 
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class EmployeeDirectory {
     }
 
     public void logout(Employee employee) {
-        employee.setOnline(false);
+        employee.setOffline();
     }
 
     public void updateEmployeeBio(Employee author, Employee target, String newBio) {
