@@ -10,17 +10,16 @@ public class Employee {
     private String name;
     private String email;
     private String password;
-//    private Boolean online;
-    private EmployeeStatus status;
+    private Status status;
     private Date lastOnline;
     private Profile profile;
 
     public void setOnline() {
-        this.status = EmployeeStatus.ONLINE;
+        this.status = Status.ONLINE;
     }
 
     public void setOffline() {
-        this.status = EmployeeStatus.OFFLINE;
+        this.status = Status.OFFLINE;
     }
 
     // standard encapsulation and override methods
@@ -30,7 +29,7 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.status = EmployeeStatus.OFFLINE;
+        this.status = Status.OFFLINE;
         this.lastOnline = new Date();
     }
 
@@ -39,7 +38,7 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.status = EmployeeStatus.OFFLINE;
+        this.status = Status.OFFLINE;
         this.lastOnline = new Date();
     }
 
@@ -83,11 +82,11 @@ public class Employee {
         this.profile = profile;
     }
 
-    public EmployeeStatus getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(EmployeeStatus status) {
+    public void setStatus(Status status) {
         this.status = status;
         this.lastOnline = new Date();
     }

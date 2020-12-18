@@ -1,5 +1,5 @@
 package com.company;
 
-public enum EmployeeStatus {
+public enum Status {
     ONLINE, OFFLINE
 }
