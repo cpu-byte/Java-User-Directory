@@ -7,9 +7,10 @@ public class EmployeeDirectory {
 
     private List<Employee> employees;
 
-    public void login(String email, String password) {
+    public Employee login(String email, String password) {
+        Employee foundEmployee = null;
+
         try {
-            Employee foundEmployee = null;
 
             for (Employee employee : employees)
                 if (employee.getEmail().equals(email) && employee.getPassword().equals(password))
@@ -21,6 +22,8 @@ public class EmployeeDirectory {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return foundEmployee;
     }
 
     public void logout(Employee employee) {
