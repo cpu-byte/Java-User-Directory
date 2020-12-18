@@ -17,12 +17,14 @@ public class Employee {
     private Date lastOnline = new Date();
     private Profile profile = new Profile("No info provided.");
 
-    public void addAssociatedTeam(Team team) {
+    public List<Team> addAssociatedTeam(Team team) {
         this.associatedTeams.add(team);
+        return associatedTeams;
     }
 
-    public void removeAssociatedTeam(Team team) {
+    public List<Team> removeAssociatedTeam(Team team) {
         this.associatedTeams.remove(team);
+        return associatedTeams;
     }
 
     public void setOnline() {
