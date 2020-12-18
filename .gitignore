@@ -1,6 +1,4 @@
 # Project exclude paths
+/.idea/
 /out/
-.idea/
-HKSystem.iml
-*.xml
 *.iml
