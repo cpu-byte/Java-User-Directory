@@ -9,19 +9,28 @@ public class Team {
 
     private String id;
     private String name;
-    private List<String> members = new ArrayList<>();
+    private List<Employee> members = new ArrayList<>();
 
     public int numOfMembers() {
         return this.members.size();
     }
 
-    public List<String> addMember(String uuid) {
-        this.members.add(uuid);
+    public List<String> memberIdList() {
+        var memberIds = new ArrayList<String>();
+
+        for (Employee employee : members)
+            memberIds.add(employee.getId());
+
+        return memberIds;
+    }
+
+    public List<Employee> addMember(Employee employee) {
+        this.members.add(employee);
         return members;
     }
 
-    public List<String> removeMember(String uuid) {
-        this.members.remove(uuid);
+    public List<Employee> removeMember(Employee employee) {
+        this.members.remove(employee);
         return members;
     }
 
@@ -54,11 +63,11 @@ public class Team {
         this.name = name;
     }
 
-    public List<String> getMembers() {
+    public List<Employee> getMembers() {
         return members;
     }
 
-    public void setMembers(List<String> members) {
+    public void setMembers(List<Employee> members) {
         this.members = members;
     }
 

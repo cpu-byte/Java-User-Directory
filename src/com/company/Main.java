@@ -7,6 +7,10 @@ public class Main {
     public static void main(String[] args) {
 
         /**
+         * impl.
+         * - remove a user should remove them from all teams
+         *
+         * test.
          * - when an id is changed in an employee, the ids references in the teams should also be updated
          */
 
@@ -22,8 +26,8 @@ public class Main {
         // team setup and member population
         var team1 = new Team("Finance");
         var team2 = new Team("Admin");
-        team1.setMembers(List.of(employee1.getId(), employee2.getId(), employee3.getId(), employee4.getId()));
-        team2.setMembers(List.of(employee4.getId(), employee5.getId(), employee6.getId()));
+        team1.setMembers(List.of(employee1, employee2, employee3, employee4));
+        team2.setMembers(List.of(employee4, employee5, employee6));
         List<Team> teams = List.of(team1, team2);
 
         // hksys setup
