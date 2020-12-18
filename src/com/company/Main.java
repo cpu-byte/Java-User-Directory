@@ -6,6 +6,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+        /**
+         * - when an id is changed in an employee, the ids references in the teams should also be updated
+         */
+
         // employee setup
         var employee1 = new Manager("0404419a", "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
         var employee2 = new Employee("5ae9e818", "Rachel Green", "rachel.green@mail.com", "SecretPhrase");
