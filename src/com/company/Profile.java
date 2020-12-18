@@ -7,6 +7,10 @@ public class Profile {
     private String biography;
     private Date lastUpdated;
 
+    private void updated() {
+        this.lastUpdated = new Date();
+    }
+
 
     // standard encapsulation and override methods
 
@@ -24,12 +28,12 @@ public class Profile {
         updated();
     }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public void setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
-    private void updated() {
-        this.lastUpdated = new Date();
+    public Date getLastUpdated() {
+        return lastUpdated;
     }
 
     @Override
