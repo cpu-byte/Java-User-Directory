@@ -6,12 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /**
-         * impl.
-         * - remove a user should remove them from all teams
-         *
-         * test.
-         * - when an id is changed in an employee, the ids references in the teams should also be updated
+        /*
+          impl.
+          - remove a user should remove them from all teams
+
+          test.
+          - when an id is changed in an employee, the ids references in the teams should also be updated
          */
 
         // employee setup
