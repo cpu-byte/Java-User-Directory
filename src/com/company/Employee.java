@@ -1,6 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static com.company.Utility.uuidGenerate;
 
@@ -10,9 +12,18 @@ public class Employee {
     private String name;
     private String email;
     private String password;
-    private Status status;
-    private Date lastOnline;
-    private Profile profile;
+    private List<Team> associatedTeams = new ArrayList<>();
+    private Status status = Status.OFFLINE;
+    private Date lastOnline = new Date();
+    private Profile profile = new Profile("No info provided.");
+
+    public void addAssociatedTeam(Team team) {
+        this.associatedTeams.add(team);
+    }
+
+    public void removeAssociatedTeam(Team team) {
+        this.associatedTeams.remove(team);
+    }
 
     public void setOnline() {
         this.status = Status.ONLINE;
@@ -22,6 +33,7 @@ public class Employee {
         this.status = Status.OFFLINE;
     }
 
+
     // standard encapsulation and override methods
 
     public Employee(String id, String name, String email, String password) {
@@ -29,8 +41,6 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.status = Status.OFFLINE;
-        this.lastOnline = new Date();
     }
 
     public Employee(String name, String email, String password) {
@@ -38,8 +48,6 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.status = Status.OFFLINE;
-        this.lastOnline = new Date();
     }
 
     public String getId() {
@@ -91,6 +99,14 @@ public class Employee {
         this.lastOnline = new Date();
     }
 
+    public List<Team> getAssociatedTeams() {
+        return associatedTeams;
+    }
+
+    public void setAssociatedTeams(List<Team> associatedTeams) {
+        this.associatedTeams = associatedTeams;
+    }
+
     public Date getLastOnline() {
         return lastOnline;
     }
@@ -106,7 +122,9 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", associatedTeams=" + associatedTeams +
                 ", status=" + status +
+                ", lastOnline=" + lastOnline +
                 ", profile=" + profile +
                 '}';
     }
