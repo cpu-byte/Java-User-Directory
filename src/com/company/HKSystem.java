@@ -6,7 +6,7 @@ import java.util.List;
 public class HKSystem {
 
     private String name;
-    private EmployeeDirectory empDir;
+    private UserDirectory empDir;
     private TeamDirectory teamDir;
 
     public List<Team> employeeTeams(Employee employee) {
@@ -44,7 +44,7 @@ public class HKSystem {
     // standard encapsulation and override methods
 
     public HKSystem() {
-        this.empDir = new EmployeeDirectory();
+        this.empDir = new UserDirectory();
         this.teamDir = new TeamDirectory();
     }
 
@@ -52,9 +52,9 @@ public class HKSystem {
         this.name = name;
     }
 
-    public HKSystem(String name, EmployeeDirectory employeeDirectory, TeamDirectory teamDirectory) {
+    public HKSystem(String name, UserDirectory userDirectory, TeamDirectory teamDirectory) {
         this.name = name;
-        this.empDir = employeeDirectory;
+        this.empDir = userDirectory;
         this.teamDir = teamDirectory;
     }
 
@@ -66,12 +66,12 @@ public class HKSystem {
         this.name = name;
     }
 
-    public EmployeeDirectory getEmployeeDirectory() {
+    public UserDirectory getEmployeeDirectory() {
         return empDir;
     }
 
-    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
-        this.empDir = employeeDirectory;
+    public void setEmployeeDirectory(UserDirectory userDirectory) {
+        this.empDir = userDirectory;
     }
 
     public TeamDirectory getTeamDirectory() {

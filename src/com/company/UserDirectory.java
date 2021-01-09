@@ -3,16 +3,16 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeDirectory {
+public class UserDirectory {
 
-    private List<Employee> employees;
+    private List<Employee> users;
 
     public Employee login(String email, String password) {
         Employee foundEmployee = null;
 
         try {
 
-            for (Employee employee : employees)
+            for (Employee employee : users)
                 if (employee.getEmail().equals(email) && employee.getPassword().equals(password))
                     foundEmployee = employee;
 
@@ -33,7 +33,7 @@ public class EmployeeDirectory {
     public Profile profileById(String employeeId) {
         Profile foundProfile = null;
 
-        for (Employee employee : employees)
+        for (Employee employee : users)
             if (employee.getEmployeeId().equals(employeeId))
                 foundProfile = employee.getProfile();
 
@@ -52,45 +52,45 @@ public class EmployeeDirectory {
     }
 
     public int numOfEmployees() {
-        return this.employees.size();
+        return this.users.size();
     }
 
     public List<Employee> addEmployee(Employee employee) {
-        this.employees.add(employee);
-        return employees;
+        this.users.add(employee);
+        return users;
     }
 
     public List<Employee> removeEmployee(Employee employee) {
-        this.employees.remove(employee);
-        return employees;
+        this.users.remove(employee);
+        return users;
     }
 
 
     // standard encapsulation and override methods
 
-    public EmployeeDirectory() {
-        this.employees = new ArrayList<>();
+    public UserDirectory() {
+        this.users = new ArrayList<>();
     }
 
-    public EmployeeDirectory(List<Employee> employees) {
-        this.employees = employees;
+    public UserDirectory(List<Employee> employees) {
+        this.users = employees;
     }
 
     public List<Employee> getEmployees() {
-        return employees;
+        return users;
     }
 
     public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+        this.users = employees;
     }
 
     @Override
     public String toString() {
         List<String> stringEmployees = new ArrayList<>();
-        for (Employee employee : employees) stringEmployees.add("\n\t" + employee.toString());
+        for (Employee employee : users) stringEmployees.add("\n\t" + employee.toString());
 
         return "EmployeeDirectory{" +
-                "employees=" + stringEmployees +
+                "users=" + stringEmployees +
                 '}';
     }
 }

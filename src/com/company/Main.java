@@ -31,9 +31,9 @@ public class Main {
         List<Team> teams = List.of(team1, team2);
 
         // hksys setup
-        var empDir = new EmployeeDirectory(employees);
+        var userDir = new UserDirectory(employees);
         var teamDir = new TeamDirectory(teams);
-        var hksys = new HKSystem("Hill and Knowlton", empDir, teamDir);
+        var hksys = new HKSystem("Hill and Knowlton", userDir, teamDir);
 
 
         System.out.println(hksys);
