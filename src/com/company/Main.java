@@ -1,10 +1,28 @@
 package com.company;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        // new profile setup
+        var profile = new Profile("Hello world.");
+        System.out.println(profile);
+
+        TimeUnit.SECONDS.sleep(2);
+
+        var bioUpdateCommand1 = new SetProfileBiographyCommand(profile, "Welcome to my profile!");
+        var profileInvoker = new ProfileInvoker();
+        profileInvoker.setBioCommand(bioUpdateCommand1);
+        profileInvoker.invokeSetBio();
+
+        System.out.println(profile);
+
+    }
+
+    public static void main2(String[] args) {
 
         /*
           impl.
