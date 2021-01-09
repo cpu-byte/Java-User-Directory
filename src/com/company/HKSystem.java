@@ -29,6 +29,17 @@ public class HKSystem {
         return employeesInTeam;
     }
 
+    public List<Employee> searchEmployeesByName(String searchTerm) {
+        return Search.employeesByName(this.empDir.getEmployees(), searchTerm);
+    }
+
+    public List<Team> teamsByName(String searchTerm) {
+        return Search.teamsByName(this.teamDir.getTeams(), searchTerm);
+    }
+
+    public List<Employee> employeesByTeam(String searchTerm) {
+        return Search.employeesByTeam(this.empDir.getEmployees(), this.teamDir.getTeams(), searchTerm);
+    }
 
     // standard encapsulation and override methods
 
