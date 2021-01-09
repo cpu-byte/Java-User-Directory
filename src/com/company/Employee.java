@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static com.company.Utility.uuidGenerate;
 
@@ -14,7 +12,7 @@ public class Employee {
     private String password;
     private List<Team> associatedTeams = new ArrayList<>();
     private Status status = Status.OFFLINE;
-    private Date lastOnline = new Date();
+    private List<AbstractMap.SimpleEntry<Date, Status>> statusHistory = new ArrayList<>();
     private Profile profile = new Profile("No info provided.");
 
     public List<Team> addAssociatedTeam(Team team) {
@@ -28,11 +26,11 @@ public class Employee {
     }
 
     public void setOnline() {
-        this.status = Status.ONLINE;
+        this.setStatus(Status.ONLINE);
     }
 
     public void setOffline() {
-        this.status = Status.OFFLINE;
+        this.setStatus(Status.OFFLINE);
     }
 
 
@@ -97,8 +95,10 @@ public class Employee {
     }
 
     public void setStatus(Status status) {
-        this.status = status;
-        this.lastOnline = new Date();
+        if (!status.equals(this.status)) {
+            this.statusHistory.add(new AbstractMap.SimpleEntry<>(new Date(), status));
+            this.status = status;
+        }
     }
 
     public List<Team> getAssociatedTeams() {
@@ -109,12 +109,12 @@ public class Employee {
         this.associatedTeams = associatedTeams;
     }
 
-    public Date getLastOnline() {
-        return lastOnline;
+    public List<AbstractMap.SimpleEntry<Date, Status>> getStatusHistory() {
+        return statusHistory;
     }
 
-    public void setLastOnline(Date lastOnline) {
-        this.lastOnline = lastOnline;
+    public void setStatusHistory(List<AbstractMap.SimpleEntry<Date, Status>> statusHistory) {
+        this.statusHistory = statusHistory;
     }
 
     @Override
@@ -126,7 +126,7 @@ public class Employee {
                 ", password='" + password + '\'' +
                 ", associatedTeams=" + associatedTeams +
                 ", status=" + status +
-                ", lastOnline=" + lastOnline +
+                ", statusHistory=" + statusHistory +
                 ", profile=" + profile +
                 '}';
     }
