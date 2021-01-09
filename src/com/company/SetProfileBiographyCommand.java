@@ -16,18 +16,3 @@ public class SetProfileBiographyCommand implements Command {
         this.profile.setBiography(this.newBiography);
     }
 }
-
-//public class SetProfileBiographyCommand implements Command {
-//
-//    private Profile profile;
-//
-//    public SetProfileBiographyCommand(Profile profile) {
-//        this.profile = profile;
-//    }
-//
-//    @Override
-//    public void execute(String newBiography) {
-//        profile.setBiography(newBiography);
-//    }
-//
-//}

@@ -11,7 +11,6 @@ public class Invoker {
     public void invoke(Command command) {
         this.history.add(command);
         command.execute();
-        System.out.println(history.size());
     }
 
     public void undo() {
@@ -32,18 +31,3 @@ public class Invoker {
     }
 
 }
-
-
-//// Invoker
-//public class Controller {
-//
-//    private Command command;
-//
-//    public void setCommand(Command command) {
-//        this.command = command;
-//    }
-//
-//    public void executeCommand() {
-//        command.execute();
-//    }
-//}
