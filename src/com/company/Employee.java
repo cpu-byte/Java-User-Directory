@@ -8,7 +8,7 @@ import static com.company.Utility.uuidGenerate;
 
 public class Employee {
 
-    private String id;
+    private String employeeId;
     private String name;
     private String email;
     private String password;
@@ -38,26 +38,26 @@ public class Employee {
 
     // standard encapsulation and override methods
 
-    public Employee(String id, String name, String email, String password) {
-        this.id = id;
+    public Employee(String employeeId, String name, String email, String password) {
+        this.employeeId = employeeId;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
     public Employee(String name, String email, String password) {
-        this.id = uuidGenerate();
+        this.employeeId = uuidGenerate();
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public String getId() {
-        return id;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmployeeId(String id) {
+        this.employeeId = id;
     }
 
     public String getName() {
@@ -120,7 +120,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id='" + id + '\'' +
+                "employeeId='" + employeeId + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

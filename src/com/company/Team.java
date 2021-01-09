@@ -7,7 +7,7 @@ import static com.company.Utility.uuidGenerate;
 
 public class Team {
 
-    private String id;
+    private String teamId;
     private String name;
     private List<Employee> members = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public class Team {
         var memberIds = new ArrayList<String>();
 
         for (Employee employee : members)
-            memberIds.add(employee.getId());
+            memberIds.add(employee.getEmployeeId());
 
         return memberIds;
     }
@@ -38,21 +38,21 @@ public class Team {
     // standard encapsulation and override methods
 
     public Team(String id, String name) {
-        this.id = id;
+        this.teamId = id;
         this.name = name;
     }
 
     public Team(String name) {
-        this.id = uuidGenerate();
+        this.teamId = uuidGenerate();
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getTeamId() {
+        return teamId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 
     public String getName() {
@@ -74,7 +74,7 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
-                "id='" + id + '\'' +
+                "teamId='" + teamId + '\'' +
                 ", name='" + name + '\'' +
                 ", members=" + members +
                 '}';

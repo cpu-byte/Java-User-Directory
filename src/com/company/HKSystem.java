@@ -13,7 +13,7 @@ public class HKSystem {
         var employeeTeams = new ArrayList<Team>();
 
         for (Team team : this.teamDir.getTeams()) {
-            if (team.getMembers().contains(employee.getId()))
+            if (team.getMembers().contains(employee.getEmployeeId()))
                 employeeTeams.add(team);
         }
 
@@ -24,7 +24,7 @@ public class HKSystem {
         var employeesInTeam = new ArrayList<Employee>();
 
         for (Employee employee : this.empDir.getEmployees())
-            if (team.getMembers().contains(employee.getId())) employeesInTeam.add(employee);
+            if (team.getMembers().contains(employee.getEmployeeId())) employeesInTeam.add(employee);
 
         return employeesInTeam;
     }

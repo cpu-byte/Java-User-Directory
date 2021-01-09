@@ -42,7 +42,7 @@ public abstract class Search {
                 if (teamNameSegment.equals(term))
                     // for every match, add employees to matchingResults if they have IDs in the team members list
                     for (Employee employee : employees)
-                        if (team.memberIdList().contains(employee.getId())) matchingResults.add(employee);
+                        if (team.memberIdList().contains(employee.getEmployeeId())) matchingResults.add(employee);
 
         // returning list w/o duplicated (applicable when employees are in multiple matching teams)
         return matchingResults.stream().distinct().collect(Collectors.toList());

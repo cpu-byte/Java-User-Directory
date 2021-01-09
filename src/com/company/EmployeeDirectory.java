@@ -34,7 +34,7 @@ public class EmployeeDirectory {
         Profile foundProfile = null;
 
         for (Employee employee : employees)
-            if (employee.getId().equals(employeeId))
+            if (employee.getEmployeeId().equals(employeeId))
                 foundProfile = employee.getProfile();
 
         return foundProfile;
