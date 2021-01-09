@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HKSystem {
+public class DirectoryBase {
 
     private String name;
     private UserDirectory empDir;
@@ -43,16 +43,16 @@ public class HKSystem {
 
     // standard encapsulation and override methods
 
-    public HKSystem() {
+    public DirectoryBase() {
         this.empDir = new UserDirectory();
         this.teamDir = new TeamDirectory();
     }
 
-    public HKSystem(String name) {
+    public DirectoryBase(String name) {
         this.name = name;
     }
 
-    public HKSystem(String name, UserDirectory userDirectory, TeamDirectory teamDirectory) {
+    public DirectoryBase(String name, UserDirectory userDirectory, TeamDirectory teamDirectory) {
         this.name = name;
         this.empDir = userDirectory;
         this.teamDir = teamDirectory;
@@ -84,9 +84,9 @@ public class HKSystem {
 
     @Override
     public String toString() {
-        return "HKSystem{" +
+        return "DirectoryBase{" +
                 "name='" + name + '\'' +
-                ",\n employeeDirectory=" + empDir +
+                ",\n userDirectory=" + empDir +
                 ",\n teamDirectory=" + teamDir +
                 '}';
     }

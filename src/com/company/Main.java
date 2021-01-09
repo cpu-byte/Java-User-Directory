@@ -33,7 +33,7 @@ public class Main {
         // hksys setup
         var userDir = new UserDirectory(employees);
         var teamDir = new TeamDirectory(teams);
-        var hksys = new HKSystem("Hill and Knowlton", userDir, teamDir);
+        var hksys = new DirectoryBase("Hill and Knowlton", userDir, teamDir);
 
 
         System.out.println(hksys);
