@@ -44,15 +44,10 @@ public class UserDirectory implements UserDirectoryInterface {
         return foundProfile;
     }
 
-    public void updateUserBio(Employee author, Employee target, String newBio) {
-        try {
-            if (author instanceof Manager) target.setProfile(new Profile(newBio));
-            else throw new Exception("Invalid Permissions");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public boolean updateUserBio(Employee author, Employee target, String newBio) {
+        if (author instanceof Manager) target.setProfile(new Profile(newBio));
+        else return false;
+        return true;
     }
 
     public int numOfUsers() {
@@ -96,5 +91,20 @@ public class UserDirectory implements UserDirectoryInterface {
         return "EmployeeDirectory{" +
                 "users=" + stringUsers +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserDirectory that = (UserDirectory) o;
+
+        return users.equals(that.users);
+    }
+
+    @Override
+    public int hashCode() {
+        return users.hashCode();
     }
 }
