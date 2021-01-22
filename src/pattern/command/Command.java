@@ -1,4 +1,4 @@
-package com.company;
+package pattern.command;
 
 // Command
 public interface Command {

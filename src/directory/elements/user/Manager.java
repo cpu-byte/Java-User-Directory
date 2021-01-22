@@ -1,4 +1,4 @@
-package com.company;
+package directory.elements.user;
 
 public class Manager extends Employee {
 

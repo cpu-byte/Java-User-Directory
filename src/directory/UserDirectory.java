@@ -1,33 +1,37 @@
-package com.company;
+package directory;
+
+import directory.elements.user.Employee;
+import directory.elements.user.Manager;
+import directory.elements.user.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDirectory {
+public class UserDirectory implements UserDirectoryInterface {
 
     private List<Employee> users;
 
     public Employee login(String email, String password) {
-        Employee foundEmployee = null;
+        Employee userFound = null;
 
         try {
 
-            for (Employee employee : users)
-                if (employee.getEmail().equals(email) && employee.getPassword().equals(password))
-                    foundEmployee = employee;
+            for (Employee user : users)
+                if (user.getEmail().equals(email) && user.getPassword().equals(password))
+                    userFound = user;
 
-            if (foundEmployee != null) foundEmployee.setOnline();
+            if (userFound != null) userFound.setOnline();
             else throw new Exception("Invalid Credentials");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return foundEmployee;
+        return userFound;
     }
 
-    public void logout(Employee employee) {
-        employee.setOffline();
+    public void logout(Employee user) {
+        user.setOffline();
     }
 
     public Profile profileById(String employeeId) {
@@ -40,7 +44,7 @@ public class UserDirectory {
         return foundProfile;
     }
 
-    public void updateEmployeeBio(Employee author, Employee target, String newBio) {
+    public void updateUserBio(Employee author, Employee target, String newBio) {
         try {
             if (author instanceof Manager) target.setProfile(new Profile(newBio));
             else throw new Exception("Invalid Permissions");
@@ -51,17 +55,17 @@ public class UserDirectory {
 
     }
 
-    public int numOfEmployees() {
+    public int numOfUsers() {
         return this.users.size();
     }
 
-    public List<Employee> addEmployee(Employee employee) {
-        this.users.add(employee);
+    public List<Employee> addUser(Employee user) {
+        this.users.add(user);
         return users;
     }
 
-    public List<Employee> removeEmployee(Employee employee) {
-        this.users.remove(employee);
+    public List<Employee> removeUser(Employee user) {
+        this.users.remove(user);
         return users;
     }
 
@@ -72,25 +76,25 @@ public class UserDirectory {
         this.users = new ArrayList<>();
     }
 
-    public UserDirectory(List<Employee> employees) {
-        this.users = employees;
+    public UserDirectory(List<Employee> users) {
+        this.users = users;
     }
 
-    public List<Employee> getEmployees() {
+    public List<Employee> getUsers() {
         return users;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.users = employees;
+    public void setUsers(List<Employee> users) {
+        this.users = users;
     }
 
     @Override
     public String toString() {
-        List<String> stringEmployees = new ArrayList<>();
-        for (Employee employee : users) stringEmployees.add("\n\t" + employee.toString());
+        List<String> stringUsers = new ArrayList<>();
+        for (Employee employee : users) stringUsers.add("\n\t" + employee.toString());
 
         return "EmployeeDirectory{" +
-                "users=" + stringEmployees +
+                "users=" + stringUsers +
                 '}';
     }
 }

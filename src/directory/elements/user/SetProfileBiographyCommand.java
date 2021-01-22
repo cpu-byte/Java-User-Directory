@@ -1,4 +1,6 @@
-package com.company;
+package directory.elements.user;
+
+import pattern.command.Command;
 
 // ConcreteCommand
 public class SetProfileBiographyCommand implements Command {

@@ -1,10 +1,12 @@
-package com.company;
+package directory.elements.user;
+
+import directory.elements.Team;
 
 import java.util.*;
 
-import static com.company.Utility.uuidGenerate;
+import static directory.elements.Utility.uuidGenerate;
 
-public class Employee {
+public class Employee implements UserInterface {
 
     private String employeeId;
     private String name;

@@ -1,11 +1,13 @@
-package com.company;
+package directory.elements;
+
+import directory.elements.user.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.Utility.uuidGenerate;
+import static directory.elements.Utility.uuidGenerate;
 
-public class Team {
+public class Team implements TeamInterface {
 
     private String teamId;
     private String name;

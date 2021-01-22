@@ -1,8 +1,9 @@
-package com.company;
+package directory.elements.user;
 
-public class Profile {
+public class Profile implements ProfileInterface {
 
     private String biography;
+
 
     // standard encapsulation and override methods
 
@@ -23,5 +24,20 @@ public class Profile {
         return "Profile{" +
                 "biography='" + biography + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Profile profile = (Profile) o;
+
+        return biography.equals(profile.biography);
+    }
+
+    @Override
+    public int hashCode() {
+        return biography.hashCode();
     }
 }

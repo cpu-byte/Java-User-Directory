@@ -1,4 +1,7 @@
-package com.company;
+package directory;
+
+import directory.elements.Team;
+import directory.elements.user.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +35,7 @@ public abstract class Search {
         return matchingResults;
     }
 
-    public static List<Employee> employeesByTeam(List<Employee> employees, List<Team> teams, String searchTerm) {
+    public static List<Employee> employeesByTeamName(List<Employee> employees, List<Team> teams, String searchTerm) {
         final String term = searchTerm.toLowerCase();
         var matchingResults = new ArrayList<Employee>();
 

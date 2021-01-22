@@ -1,9 +1,11 @@
-package com.company;
+package directory;
+
+import directory.elements.Team;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamDirectory {
+public class TeamDirectory implements TeamDirectoryInterface {
 
     private List<Team> teams;
 

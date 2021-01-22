@@ -1,7 +1,11 @@
-package com.company;
+import directory.DirectoryBase;
+import directory.TeamDirectory;
+import directory.UserDirectory;
+import directory.elements.Team;
+import directory.elements.user.Employee;
+import directory.elements.user.Manager;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -47,7 +51,7 @@ public class Main {
 
         /*
           impl.
-          - remove a user should remove them from all teams
+          - remove a directory.elements.user should remove them from all teams
 
           test.
           - when an id is changed in an employee, the ids references in the teams should also be updated
