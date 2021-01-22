@@ -60,8 +60,15 @@ class TeamTest {
         team.setMembers(employees);
 
         // all items in the employees list have to be apart of the team's members
-        for(Employee emps : employees)
-            assertTrue(team.memberIdList().contains(emps.getEmployeeId()));
+        var empIdList = new ArrayList<String>();
+        for(Employee emp : employees) {
+            empIdList.add(emp.getEmployeeId());
+            assertTrue(team.memberIdList().contains(emp.getEmployeeId()));
+        }
+        // so all ids in the value returned by memberIdList should
+        // ...contain all employees variable employee ids
+        for(String empId : empIdList)
+            assertTrue(team.memberIdList().contains(empId));
     }
 
     @Test
