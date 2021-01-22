@@ -11,7 +11,7 @@ public interface DirectoryBaseInterface {
     List<Employee> employeesInTeam(Team team);
     List<Employee> searchEmployeesByName(String searchTerm);
     List<Team> searchTeamsByName(String searchTerm);
-    List<Employee> searchEmployeesByTeam(String searchTerm);
+    List<Employee> searchEmployeesByTeamName(String searchTerm);
 
     // standard encapsulation and override methods
     String getName();

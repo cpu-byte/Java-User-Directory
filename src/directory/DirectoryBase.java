@@ -16,7 +16,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
         var employeeTeams = new ArrayList<Team>();
 
         for (Team team : this.teamDir.getTeams()) {
-            if (team.getMembers().contains(employee.getEmployeeId()))
+            if (team.getMembers().contains(employee))
                 employeeTeams.add(team);
         }
 
@@ -27,7 +27,8 @@ public class DirectoryBase implements DirectoryBaseInterface {
         var employeesInTeam = new ArrayList<Employee>();
 
         for (Employee employee : this.userDir.getUsers())
-            if (team.getMembers().contains(employee.getEmployeeId())) employeesInTeam.add(employee);
+            if (team.getMembers().contains(employee))
+                employeesInTeam.add(employee);
 
         return employeesInTeam;
     }
@@ -40,7 +41,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
         return Search.teamsByName(this.teamDir.getTeams(), searchTerm);
     }
 
-    public List<Employee> searchEmployeesByTeam(String searchTerm) {
+    public List<Employee> searchEmployeesByTeamName(String searchTerm) {
         return Search.employeesByTeamName(this.userDir.getUsers(), this.teamDir.getTeams(), searchTerm);
     }
 
