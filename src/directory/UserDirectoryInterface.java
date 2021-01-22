@@ -10,7 +10,7 @@ public interface UserDirectoryInterface {
     Employee login(String email, String password);
     void logout(Employee user);
     Profile profileById(String employeeId);
-    void updateUserBio(Employee author, Employee target, String newBio);
+    boolean updateUserBio(Employee author, Employee target, String newBio);
     int numOfUsers();
     List<Employee> addUser(Employee user);
     List<Employee> removeUser(Employee user);
