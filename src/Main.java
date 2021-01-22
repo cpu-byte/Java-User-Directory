@@ -9,44 +9,6 @@ import java.util.List;
 
 public class Main {
 
-//    public static void main(String[] args) throws InterruptedException {
-//
-//        // new profile setup
-//        var profile = new Profile("Hello world.");
-//        var profileInvoker = new Invoker();
-//        System.out.println(profile);
-//
-//        // update no. 1
-//        var bioUpdateCommand1 = new SetProfileBiographyCommand(profile, "Welcome to my profile!");
-//        profileInvoker.invoke(bioUpdateCommand1);
-//        System.out.println(profile);
-//
-//        TimeUnit.SECONDS.sleep(1);
-//
-//        // update no. 2
-//        var bioUpdateCommand2 = new SetProfileBiographyCommand(profile, "I work in HR.");
-//        profileInvoker.invoke(bioUpdateCommand2);
-//        System.out.println(profile);
-//
-//        TimeUnit.SECONDS.sleep(1);
-//
-//        // update no. 3
-//        var bioUpdateCommand3 = new SetProfileBiographyCommand(profile, "I'm the CEO");
-//        profileInvoker.invoke(bioUpdateCommand3);
-//        System.out.println(profile);
-//
-//        System.out.println("\n");
-//
-//        profileInvoker.undo();
-//        profileInvoker.undo();
-//
-//        System.out.println(profile);
-//
-//
-//        profileInvoker.undo();
-//
-//    }
-
     public static void main(String[] args) {
 
         /*
