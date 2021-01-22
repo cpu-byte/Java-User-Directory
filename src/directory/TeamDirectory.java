@@ -50,4 +50,19 @@ public class TeamDirectory implements TeamDirectoryInterface {
                 "teams=" + stringTeams +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TeamDirectory that = (TeamDirectory) o;
+
+        return teams.equals(that.teams);
+    }
+
+    @Override
+    public int hashCode() {
+        return teams.hashCode();
+    }
 }
