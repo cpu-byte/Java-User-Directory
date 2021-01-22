@@ -100,7 +100,7 @@ class EmployeeTest {
     }
 
     @Test
-    void statusHistory() throws InterruptedException {
+    void statusHistoryDates() throws InterruptedException {
         // testing the setOnline and setOffline methods as well as Status History
 
         // get the date before and after setting status online, pt. 1 - online
