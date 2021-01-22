@@ -81,4 +81,24 @@ public class Team implements TeamInterface {
                 ", members=" + members +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Team team = (Team) o;
+
+        if (!teamId.equals(team.teamId)) return false;
+        if (!name.equals(team.name)) return false;
+        return members.equals(team.members);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = teamId.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + members.hashCode();
+        return result;
+    }
 }
