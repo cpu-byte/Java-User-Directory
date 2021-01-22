@@ -132,4 +132,34 @@ public class Employee implements UserInterface {
                 ", profile=" + profile +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (!employeeId.equals(employee.employeeId)) return false;
+        if (!name.equals(employee.name)) return false;
+        if (!email.equals(employee.email)) return false;
+        if (!password.equals(employee.password)) return false;
+        if (!associatedTeams.equals(employee.associatedTeams)) return false;
+        if (status != employee.status) return false;
+        if (!statusHistory.equals(employee.statusHistory)) return false;
+        return profile.equals(employee.profile);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = employeeId.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + associatedTeams.hashCode();
+        result = 31 * result + status.hashCode();
+        result = 31 * result + statusHistory.hashCode();
+        result = 31 * result + profile.hashCode();
+        return result;
+    }
 }
