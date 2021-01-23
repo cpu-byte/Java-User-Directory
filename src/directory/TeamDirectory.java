@@ -13,15 +13,6 @@ public class TeamDirectory implements TeamDirectoryInterface {
         return this.teams.size();
     }
 
-    public List<Team> addTeam(Team team) {
-        this.teams.add(team);
-        return teams;
-    }
-
-    public List<Team> removeTeam(Team team) {
-        this.teams.remove(team);
-        return teams;
-    }
 
     // standard encapsulation and override methods
 

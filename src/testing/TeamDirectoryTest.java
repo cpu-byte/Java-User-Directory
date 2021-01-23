@@ -45,23 +45,4 @@ class TeamDirectoryTest {
         assertEquals(teamDir.getTeams().size(), 2);
     }
 
-    @Test
-    void teamsManagement() {
-        // adding team
-        emptyTeamDir.addTeam(teamA);
-        assertEquals(emptyTeamDir.numOfTeams(), 1);
-        assertEquals(emptyTeamDir.getTeams().get(0), teamA);
-
-        // adding another team
-        emptyTeamDir.addTeam(teamB);
-        assertEquals(emptyTeamDir.numOfTeams(), 2);
-        assertEquals(emptyTeamDir.getTeams().get(1), teamB);
-
-        // removing team
-        emptyTeamDir.removeTeam(teamA);
-        assertEquals(emptyTeamDir.numOfTeams(), 1);
-        // item at index 0 should now be teamB instead of teamA
-        assertEquals(emptyTeamDir.getTeams().get(0), teamB);
-    }
-
 }

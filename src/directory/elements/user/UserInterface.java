@@ -8,14 +8,13 @@ import java.util.List;
 
 public interface UserInterface {
 
-    List<Team> addAssociatedTeam(Team team);
-    List<Team> removeAssociatedTeam(Team team);
+    List<String> addAssociatedTeam(String teamId);
+    List<String> removeAssociatedTeam(String teamId);
     void setOnline();
     void setOffline();
 
     // standard encapsulation and override methods
     String getEmployeeId();
-    void setEmployeeId(String id);
     String getName();
     void setName(String name);
     String getEmail();
@@ -26,10 +25,13 @@ public interface UserInterface {
     void setProfile(Profile profile);
     Status getStatus();
     void setStatus(Status status);
-    List<Team> getAssociatedTeams();
-    void setAssociatedTeams(List<Team> associatedTeams);
+    List<String> getAssociatedTeams();
+    void setAssociatedTeams(List<String> associatedTeams);
     List<AbstractMap.SimpleEntry<Date, Status>> getStatusHistory();
     void setStatusHistory(List<AbstractMap.SimpleEntry<Date, Status>> statusHistory);
     String toString();
+    boolean equals(Object o);
+    int hashCode();
+
 
 }

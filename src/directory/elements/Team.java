@@ -11,28 +11,19 @@ public class Team implements TeamInterface {
 
     private String teamId;
     private String name;
-    private List<Employee> members = new ArrayList<>();
+    private List<String> members = new ArrayList<>();
 
     public int numOfMembers() {
         return this.members.size();
     }
 
-    public List<String> memberIdList() {
-        var memberIds = new ArrayList<String>();
-
-        for (Employee employee : members)
-            memberIds.add(employee.getEmployeeId());
-
-        return memberIds;
-    }
-
-    public List<Employee> addMember(Employee employee) {
-        this.members.add(employee);
+    public List<String> addMember(String employeeId) {
+        this.members.add(employeeId);
         return members;
     }
 
-    public List<Employee> removeMember(Employee employee) {
-        this.members.remove(employee);
+    public List<String> removeMember(String employeeId) {
+        this.members.remove(employeeId);
         return members;
     }
 
@@ -53,10 +44,6 @@ public class Team implements TeamInterface {
         return teamId;
     }
 
-    public void setTeamId(String teamId) {
-        this.teamId = teamId;
-    }
-
     public String getName() {
         return name;
     }
@@ -65,11 +52,11 @@ public class Team implements TeamInterface {
         this.name = name;
     }
 
-    public List<Employee> getMembers() {
+    public List<String> getMembers() {
         return members;
     }
 
-    public void setMembers(List<Employee> members) {
+    public void setMembers(List<String> members) {
         this.members = members;
     }
 

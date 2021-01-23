@@ -11,38 +11,45 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*
-          impl.
-          - remove a directory.elements.user should remove them from all teams
+        // creating directory
+        var hksys = new DirectoryBase("Hill and Knowlton");
 
-          test.
-          - when an id is changed in an employee, the ids references in the teams should also be updated
-         */
+        // creating teams
+        var team1 = new Team("Analytics");
+        var team2 = new Team("Marketing");
 
-        // employee setup
-        var employee1 = new Manager("0404419a", "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
-        var employee2 = new Employee("5ae9e818", "Rachel Green", "rachel.green@mail.com", "SecretPhrase");
-        var employee3 = new Employee( "a88e2ce4", "Ross Geller", "ross.geller@mail.com", "123456");
-        var employee4 = new Employee("8bbc2365", "Joey Tribbiani", "joey.tribbinai@mail.com", "seven_forty_one");
-        var employee5 = new Manager("f94f40ad", "Phoebe Buffay", "phoebe.buffay@mail.com", "newYorkCity");
-        var employee6 = new Employee("741a1d8d", "Monica Geller", "monica.geller@mail.com", "centralPerk");
-        List<Employee> employees = List.of(employee1, employee2, employee3, employee4, employee5, employee6);
+        // creating users
+        var user1 = new Manager( "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
+        var user2 = new Employee("Rachel Green", "rachel.green@mail.com", "SecretPhrase");
+        var user3 = new Employee(  "Ross Geller", "ross.geller@mail.com", "123456");
+        var user4 = new Employee( "Joey Tribbiani", "joey.tribbinai@mail.com", "seven_forty_one");
+        var user5 = new Manager( "Phoebe Buffay", "phoebe.buffay@mail.com", "newYorkCity");
+        var user6 = new Employee( "Monica Geller", "monica.geller@mail.com", "centralPerk");
 
-        // team setup and member population
-        var team1 = new Team("Finance");
-        var team2 = new Team("Admin");
-        team1.setMembers(List.of(employee1, employee2, employee3, employee4));
-        team2.setMembers(List.of(employee4, employee5, employee6));
-        List<Team> teams = List.of(team1, team2);
+        // adding 2 teams
+        hksys.addTeam(team1);
+        hksys.addTeam(team2);
 
-        // hksys setup
-        var userDir = new UserDirectory(employees);
-        var teamDir = new TeamDirectory(teams);
-        var hksys = new DirectoryBase("Hill and Knowlton", userDir, teamDir);
+        // adding 6 users
+        hksys.addUser(user1);
+        hksys.addUser(user2);
+        hksys.addUser(user3);
+        hksys.addUser(user4);
+        hksys.addUser(user5);
+        hksys.addUser(user6);
 
+        // populating team1
+        hksys.addUserToTeam(team1, user1);
+        hksys.addUserToTeam(team1, user2);
+        hksys.addUserToTeam(team1, user3);
+        hksys.addUserToTeam(team1, user4);
+
+        // populating team2
+        hksys.addUserToTeam(team2, user4);
+        hksys.addUserToTeam(team2, user5);
+        hksys.addUserToTeam(team2, user6);
 
         System.out.println(hksys);
-
 
     }
 

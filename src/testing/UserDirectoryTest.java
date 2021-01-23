@@ -88,25 +88,6 @@ class UserDirectoryTest {
         assertEquals(emptyUserDir.numOfUsers(), 2);
     }
 
-    @Test
-    void userManagement() {
-        // adding a user (employee)
-        emptyUserDir.addUser(empA);
-        assertEquals(emptyUserDir.numOfUsers(), 1);
-        assertEquals(emptyUserDir.getUsers().get(0), empA);
-
-        // adding another user (manager)
-        emptyUserDir.addUser(mgr);
-        assertEquals(emptyUserDir.numOfUsers(), 2);
-        assertEquals(emptyUserDir.getUsers().get(1), mgr);
-
-        // removing user
-        emptyUserDir.removeUser(empA);
-        assertEquals(emptyUserDir.numOfUsers(), 1);
-        assertEquals(emptyUserDir.getUsers().get(0), mgr);
-        // item at index 0 should now be mgr instead of emp1
-    }
-
 }
 
 

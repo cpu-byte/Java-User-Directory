@@ -12,12 +12,12 @@ public interface UserDirectoryInterface {
     Profile profileById(String employeeId);
     boolean updateUserBio(Employee author, Employee target, String newBio);
     int numOfUsers();
-    List<Employee> addUser(Employee user);
-    List<Employee> removeUser(Employee user);
 
     // standard encapsulation and override methods
     List<Employee> getUsers();
     void setUsers(List<Employee> users);
     String toString();
+    boolean equals(Object o);
+    int hashCode();
 
 }

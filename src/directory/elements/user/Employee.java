@@ -12,18 +12,18 @@ public class Employee implements UserInterface {
     private String name;
     private String email;
     private String password;
-    private List<Team> associatedTeams = new ArrayList<>();
+    private List<String> associatedTeams = new ArrayList<>();
     private Status status = Status.OFFLINE;
     private List<AbstractMap.SimpleEntry<Date, Status>> statusHistory = new ArrayList<>();
     private Profile profile = new Profile("No info provided.");
 
-    public List<Team> addAssociatedTeam(Team team) {
-        this.associatedTeams.add(team);
+    public List<String> addAssociatedTeam(String teamId) {
+        this.associatedTeams.add(teamId);
         return associatedTeams;
     }
 
-    public List<Team> removeAssociatedTeam(Team team) {
-        this.associatedTeams.remove(team);
+    public List<String> removeAssociatedTeam(String teamId) {
+        this.associatedTeams.remove(teamId);
         return associatedTeams;
     }
 
@@ -54,10 +54,6 @@ public class Employee implements UserInterface {
 
     public String getEmployeeId() {
         return employeeId;
-    }
-
-    public void setEmployeeId(String id) {
-        this.employeeId = id;
     }
 
     public String getName() {
@@ -103,11 +99,11 @@ public class Employee implements UserInterface {
         }
     }
 
-    public List<Team> getAssociatedTeams() {
+    public List<String> getAssociatedTeams() {
         return associatedTeams;
     }
 
-    public void setAssociatedTeams(List<Team> associatedTeams) {
+    public void setAssociatedTeams(List<String> associatedTeams) {
         this.associatedTeams = associatedTeams;
     }
 

@@ -37,10 +37,6 @@ class TeamTest {
 
     @Test
     void setters() {
-        final var newId = "123abc";
-        team.setTeamId(newId);
-        assertEquals(team.getTeamId(), newId);
-
         final var newName = "Human Resources";
         team.setName(newName);
         assertEquals(team.getName(), newName);
@@ -49,49 +45,34 @@ class TeamTest {
     @Test
     void numOfMembers() {
         // after adding some employees as members, check size
-        team.setMembers(employees);
+        var memberIds = new ArrayList<String>();
+        for (Employee emp : employees) memberIds.add(emp.getEmployeeId());
+        team.setMembers(memberIds);
         assertEquals(team.getMembers().size(), team.numOfMembers());
         assertEquals(team.getMembers().size(), 2);
     }
 
     @Test
-    void memberIdList() {
-        // after adding some employees as members, check contents
-        team.setMembers(employees);
-
-        // all items in the employees list have to be apart of the team's members
-        var empIdList = new ArrayList<String>();
-        for(Employee emp : employees) {
-            empIdList.add(emp.getEmployeeId());
-            assertTrue(team.memberIdList().contains(emp.getEmployeeId()));
-        }
-        // so all ids in the value returned by memberIdList should
-        // ...contain all employees variable employee ids
-        for(String empId : empIdList)
-            assertTrue(team.memberIdList().contains(empId));
-    }
-
-    @Test
     void memberManagement() {
         // adding team
-        team.addMember(emp1);
+        team.addMember(emp1.getEmployeeId());
         // ...expecting the adding to affect the size
         assertEquals(team.getMembers().size(), 1);
         // ...expecting the added item to be in the list
         // ...and at index 0
-        assertEquals(team.getMembers().get(0), emp1);
+        assertEquals(team.getMembers().get(0), emp1.getEmployeeId());
 
-        team.addMember(emp2);
+        team.addMember(emp2.getEmployeeId());
         assertEquals(team.getMembers().size(), 2);
-        assertEquals(team.getMembers().get(1), emp2);
+        assertEquals(team.getMembers().get(1), emp2.getEmployeeId());
 
         // removing team
-        team.removeMember(emp1);
+        team.removeMember(emp1.getEmployeeId());
         // ...expecting th removal to affect the size
         assertEquals(team.getMembers().size(), 1);
         // ...expecting the removed item to not be in the list at index 0
         // ...instead index 0 should be the non-removed item
-        assertEquals(team.getMembers().get(0), emp2);
+        assertEquals(team.getMembers().get(0), emp2.getEmployeeId());
     }
 
 }

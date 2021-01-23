@@ -34,21 +34,4 @@ public abstract class Search {
 
         return matchingResults;
     }
-
-    public static List<Employee> employeesByTeamName(List<Employee> employees, List<Team> teams, String searchTerm) {
-        final String term = searchTerm.toLowerCase();
-        var matchingResults = new ArrayList<Employee>();
-
-        // for every team, lowercase and split the name
-        for (Team team : teams)
-            for (String teamNameSegment : team.getName().toLowerCase().split(" "))
-                if (teamNameSegment.equals(term))
-                    // for every match, add employees to matchingResults if they have IDs in the team members list
-                    for (Employee employee : employees)
-                        if (team.memberIdList().contains(employee.getEmployeeId())) matchingResults.add(employee);
-
-        // returning list w/o duplicated (applicable when employees are in multiple matching teams)
-        return matchingResults.stream().distinct().collect(Collectors.toList());
-    }
-
 }

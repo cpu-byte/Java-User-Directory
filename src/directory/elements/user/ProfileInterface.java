@@ -6,5 +6,7 @@ public interface ProfileInterface {
     String getBiography();
     void setBiography(String biography);
     String toString();
+    boolean equals(Object o);
+    int hashCode();
 
 }

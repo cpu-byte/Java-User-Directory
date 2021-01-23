@@ -7,11 +7,16 @@ import java.util.List;
 
 public interface DirectoryBaseInterface {
 
-    List<Team> employeeTeams(Employee employee);
-    List<Employee> employeesInTeam(Team team);
+    void addUser(Employee user);
+    void removeUser(Employee user);
+    void addTeam(Team team);
+    void removeTeam(Team team);
+    boolean addUserToTeam(Team team, Employee user);
+    boolean removeUserFromTeam(Team team, Employee user);
+    List<String> employeeTeams(Employee employee);
+    List<String> employeesInTeam(Team team);
     List<Employee> searchEmployeesByName(String searchTerm);
     List<Team> searchTeamsByName(String searchTerm);
-    List<Employee> searchEmployeesByTeamName(String searchTerm);
 
     // standard encapsulation and override methods
     String getName();
@@ -21,5 +26,7 @@ public interface DirectoryBaseInterface {
     TeamDirectory getTeamDir();
     void setTeamDir(TeamDirectory teamDirectory);
     String toString();
+    boolean equals(Object o);
+    int hashCode();
 
 }

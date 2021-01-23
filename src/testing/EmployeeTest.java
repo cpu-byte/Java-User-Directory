@@ -46,10 +46,6 @@ class EmployeeTest {
 
     @Test
     void setters() {
-        final var newId = "987";
-        emp.setEmployeeId(newId);
-        assertEquals(emp.getEmployeeId(), newId);
-
         final var newName = "Josh Doe";
         emp.setName(newName);
         assertEquals(emp.getName(), newName);
@@ -69,34 +65,34 @@ class EmployeeTest {
 
     @Test
     void teamSetter() {
-        var teamList = new ArrayList<Team>();
-        teamList.add(team1);
+        var teamList = new ArrayList<String>();
+        teamList.add(team1.getTeamId());
         emp.setAssociatedTeams(teamList);
 
         // check no. of teams
         assertEquals(emp.getAssociatedTeams().size(), 1);
 
         // check type
-        assertEquals(emp.getAssociatedTeams().get(0).getClass(), Team.class);
+        assertEquals(emp.getAssociatedTeams().get(0).getClass(), String.class);
 
         // check correct team name
-        assertEquals(emp.getAssociatedTeams().get(0).getName(), "Analytics");
+        assertEquals(emp.getAssociatedTeams().get(0), team1.getTeamId());
     }
 
     @Test
     void teamManagement() {
         // adding teams
-        emp.addAssociatedTeam(team1);
+        emp.addAssociatedTeam(team1.getTeamId());
         assertEquals(emp.getAssociatedTeams().size(), 1);
-        emp.addAssociatedTeam(team2);
+        emp.addAssociatedTeam(team2.getTeamId());
         assertEquals(emp.getAssociatedTeams().size(), 2);
 
         // removing teams
-        emp.removeAssociatedTeam(team2);
+        emp.removeAssociatedTeam(team2.getTeamId());
         assertEquals(emp.getAssociatedTeams().size(), 1);
 
         // after removal, check if the non-removed team exists
-        assertEquals(emp.getAssociatedTeams().get(0), team1);
+        assertEquals(emp.getAssociatedTeams().get(0), team1.getTeamId());
     }
 
     @Test

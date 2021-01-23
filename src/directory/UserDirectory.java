@@ -54,17 +54,6 @@ public class UserDirectory implements UserDirectoryInterface {
         return this.users.size();
     }
 
-    public List<Employee> addUser(Employee user) {
-        this.users.add(user);
-        return users;
-    }
-
-    public List<Employee> removeUser(Employee user) {
-        this.users.remove(user);
-        return users;
-    }
-
-
     // standard encapsulation and override methods
 
     public UserDirectory() {

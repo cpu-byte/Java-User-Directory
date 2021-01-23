@@ -66,11 +66,63 @@ class DirectoryBaseTest {
     }
 
     @Test
+    void teamUserRelationship() {
+        bareDir.addUser(emp1);
+        bareDir.addUser(emp2);
+        bareDir.addTeam(team1);
+        bareDir.addTeam(team2);
+
+        // testing: addUserToTeam
+        bareDir.addUserToTeam(team2, emp1);
+        // emp1's first entry in associated teams should be the id of team2
+        assertEquals(bareDir.getUserDir().getUsers().get(0).getAssociatedTeams().get(0), team2.getTeamId());
+        assertEquals(bareDir.getUserDir().getUsers().get(0).getAssociatedTeams().size(), 1);
+        // team2's first entry in members should be the id of the emp1
+        assertEquals(bareDir.getTeamDir().getTeams().get(1).getMembers().get(0), emp1.getEmployeeId());
+        assertEquals(bareDir.getTeamDir().getTeams().get(1).getMembers().size(), 1);
+
+        // testing: removeUserFromTeam
+        bareDir.removeUserFromTeam(team2, emp1);
+        // emp1 shouldn't have any associated teams as they were removed from the only team they were associated
+        assertEquals(bareDir.getUserDir().getUsers().get(0).getAssociatedTeams().size(), 0);
+        // team2 shouldn't have any members as the it was removed from being associated with any members
+        assertEquals(bareDir.getTeamDir().getTeams().get(1).getMembers().size(), 0);
+    }
+
+    @Test
+    void userRemoval() {
+        bareDir.addUser(emp1);
+        bareDir.addTeam(team1);
+
+        bareDir.addUserToTeam(team1, emp1);
+
+        // before removal of the user, team members should have a size of 1
+        assertEquals(bareDir.getTeamDir().getTeams().get(0).getMembers().size(), 1);
+        bareDir.removeUser(emp1);
+        // after removal of the user, team members should have a size of 0
+        assertEquals(bareDir.getTeamDir().getTeams().get(0).getMembers().size(), 0);
+    }
+
+    @Test
+    void teamRemoval() {
+        bareDir.addUser(emp1);
+        bareDir.addTeam(team1);
+
+        bareDir.addUserToTeam(team1, emp1);
+
+        // before removal of the team, user's associated teams should have a size of 1
+        assertEquals(bareDir.getUserDir().getUsers().get(0).getAssociatedTeams().size(), 1);
+        bareDir.removeTeam(team1);
+        // before removal of the team, user's associated teams should have a size of 0
+        assertEquals(bareDir.getUserDir().getUsers().get(0).getAssociatedTeams().size(), 0);
+    }
+
+    @Test
     void employeeTeams() {
         Team teamA = new Team("Analytics");
-        teamA.addMember(emp1);
         Team teamB = new Team("Admin");
-        teamB.addMember(emp1);
+        teamA.addMember(emp1.getEmployeeId());
+        teamB.addMember(emp1.getEmployeeId());
         dir.setTeamDir(new TeamDirectory(Arrays.asList(teamA, teamB)));
 
         // emp1 is a part of teamA and teamB
@@ -83,8 +135,8 @@ class DirectoryBaseTest {
     @Test
     void employeesInTeam() {
         Team teamA = new Team("Analytics");
-        teamA.addMember(emp1);
-        teamA.addMember(emp2);
+        teamA.addMember(emp1.getEmployeeId());
+        teamA.addMember(emp2.getEmployeeId());
         Team teamB = new Team("Admin");
         dir.setTeamDir(new TeamDirectory(Arrays.asList(teamA, teamB)));
 
@@ -111,14 +163,6 @@ class DirectoryBaseTest {
         var result2 = dir.searchTeamsByName("Admin");
         assertEquals(result2.get(0), team2);
         assertEquals(result2.size(), 1);
-
-        // searching "Finance" should return all employees that work in finance
-        var result3 = dir.searchEmployeesByTeamName("Finance");
-        // number of results should be the number of people in the team
-        assertEquals(result3.size(), team1.getMembers().size());
-        // result should contains all the same members
-        for(Employee emp : team1.getMembers())
-            assertTrue(result3.contains(emp));
     }
 
 }

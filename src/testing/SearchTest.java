@@ -6,6 +6,7 @@ import directory.elements.user.Employee;
 import directory.elements.user.Manager;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,29 +59,4 @@ class SearchTest {
         var result2 = Search.teamsByName(teams, "Analytics");
         assertEquals(result2.size(), 0);
     }
-
-    @Test
-    void employeesByTeamName() {
-        // searching "Finance" should return all employees that work in finance
-        var result1 = Search.employeesByTeamName(emps, teams, "Finance");
-        // number of results should be the number of people in the team
-        assertEquals(result1.size(), team1.getMembers().size());
-        // result should contains all the same members
-        for(Employee emp : team1.getMembers())
-            assertTrue(result1.contains(emp));
-
-        // searching "Admin" should return all employees that work in admin
-        var result2 = Search.employeesByTeamName(emps, teams, "Admin");
-        // number of results should be the number of people in the team
-        assertEquals(result2.size(), team2.getMembers().size());
-        // results should contain all the same members
-        for(Employee emp : team2.getMembers())
-            assertTrue(result1.contains(emp));
-
-        // searching "Analytics" should return no employees (there is no team named analytics)
-        var result3 = Search.employeesByTeamName(emps, teams, "Analytics");
-        // number of results should be 0 as there are no results
-        assertEquals(result3.size(), 0);
-    }
-
 }

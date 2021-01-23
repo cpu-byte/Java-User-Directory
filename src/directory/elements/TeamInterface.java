@@ -7,17 +7,17 @@ import java.util.List;
 public interface TeamInterface {
 
     int numOfMembers();
-    List<String> memberIdList();
-    List<Employee> addMember(Employee employee);
-    List<Employee> removeMember(Employee employee);
+    List<String> addMember(String employee);
+    List<String> removeMember(String employee);
 
     // standard encapsulation and override methods
     String getTeamId();
-    void setTeamId(String teamId);
     String getName();
     void setName(String name);
-    List<Employee> getMembers();
-    void setMembers(List<Employee> members);
+    List<String> getMembers();
+    void setMembers(List<String> members);
     String toString();
+    boolean equals(Object o);
+    int hashCode();
 
 }
