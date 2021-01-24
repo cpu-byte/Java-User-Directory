@@ -1,7 +1,6 @@
 package testing;
 
 import directory.DirectoryBase;
-import directory.Search;
 import directory.TeamDirectory;
 import directory.UserDirectory;
 import directory.elements.Team;
@@ -9,7 +8,6 @@ import directory.elements.user.Employee;
 import directory.elements.user.Manager;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,26 +16,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class DirectoryBaseTest {
 
     // supporting variables
-    Manager emp1 = new Manager("0404419a", "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
-    Employee emp2 = new Employee("5ae9e818", "Rachel Green", "rachel.green@mail.com", "SecretPhrase");
-    Employee emp3 = new Employee( "a88e2ce4", "Ross Geller", "ross.geller@mail.com", "123456");
-    Employee emp4 = new Employee("8bbc2365", "Joey Tribbiani", "joey.tribbinai@mail.com", "seven_forty_one");
-    Manager emp5 = new Manager("f94f40ad", "Phoebe Buffay", "phoebe.buffay@mail.com", "newYorkCity");
-    Employee emp6 = new Employee("741a1d8d", "Monica Geller", "monica.geller@mail.com", "centralPerk");
-    List<Employee> emps = List.of(emp1, emp2, emp3, emp4, emp5, emp6);
+    final Manager emp1 = new Manager("0404419a", "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
+    final Employee emp2 = new Employee("5ae9e818", "Rachel Green", "rachel.green@mail.com", "SecretPhrase");
+    final Employee emp3 = new Employee( "a88e2ce4", "Ross Geller", "ross.geller@mail.com", "123456");
+    final Employee emp4 = new Employee("8bbc2365", "Joey Tribbiani", "joey.tribbinai@mail.com", "seven_forty_one");
+    final Manager emp5 = new Manager("f94f40ad", "Phoebe Buffay", "phoebe.buffay@mail.com", "newYorkCity");
+    final Employee emp6 = new Employee("741a1d8d", "Monica Geller", "monica.geller@mail.com", "centralPerk");
+    final List<Employee> emps = List.of(emp1, emp2, emp3, emp4, emp5, emp6);
     List<Employee> empGroup1 = List.of(emp1, emp2, emp3, emp4);
     List<Employee> empGroup2 = List.of(emp4, emp5, emp6);
-    Team team1 = new Team("Finance");
-    Team team2 = new Team("Admin");
-    List<Team> teams = List.of(team1, team2);
+    final Team team1 = new Team("Finance");
+    final Team team2 = new Team("Admin");
+    final List<Team> teams = List.of(team1, team2);
     // note: emp4 is the only person who is in both teams
-    UserDirectory userDir = new UserDirectory(emps);
-    TeamDirectory teamDir = new TeamDirectory(teams);
-    String dummyName = "hk system";
+    final UserDirectory userDir = new UserDirectory(emps);
+    final TeamDirectory teamDir = new TeamDirectory(teams);
+    final String dummyName = "hk system";
 
-    DirectoryBase unnamedDir = new DirectoryBase();
-    DirectoryBase bareDir = new DirectoryBase(dummyName);
-    DirectoryBase dir = new DirectoryBase(dummyName, userDir, teamDir);
+    final DirectoryBase unnamedDir = new DirectoryBase();
+    final DirectoryBase bareDir = new DirectoryBase(dummyName);
+    final DirectoryBase dir = new DirectoryBase(dummyName, userDir, teamDir);
 
     @Test
     void initState() {
