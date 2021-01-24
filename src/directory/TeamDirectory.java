@@ -39,13 +39,17 @@ public class TeamDirectory implements TeamDirectoryInterface {
     }
 
     /**
-     *
-     * @return
+     * Getter method for the TeamDirectory teams field
+     * @return  current list of teams in the teams directory
      */
     public List<Team> getTeams() {
         return teams;
     }
 
+    /**
+     * Setter method for the TeamDirectory teams field
+     * @param teams new list of teams in the teams directory
+     */
     public void setTeams(List<Team> teams) {
         this.teams = teams;
     }
