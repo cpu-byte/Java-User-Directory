@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"directory"},{"l":"directory.elements"},{"l":"directory.elements.user"},{"l":"pattern.command"}];updateSearchResults();
