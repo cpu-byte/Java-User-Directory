@@ -1,5 +1,6 @@
 package testing;
 
+import directory.DirectoryBase;
 import directory.elements.Team;
 import directory.elements.user.Employee;
 import directory.elements.user.Profile;
@@ -143,6 +144,17 @@ class EmployeeTest {
         assertEquals(emp.getStatusHistory().size(), 0);
         emp.setStatusHistory(nonEmptyHistory);
         assertEquals(emp.getStatusHistory().size(), 1);
+    }
+
+    @Test
+    void superMethods() {
+        assertNotNull(emp.toString());
+
+        var emp1 = new Employee("a", "b", "c", "d");
+        var emp2 = new Employee("a", "b", "c", "d");
+        assertEquals(emp1, emp2);
+
+        assertEquals(emp2.hashCode(), emp1.hashCode());
     }
 
 }

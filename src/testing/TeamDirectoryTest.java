@@ -1,6 +1,7 @@
 package testing;
 
 import directory.TeamDirectory;
+import directory.UserDirectory;
 import directory.elements.Team;
 import org.junit.jupiter.api.Test;
 
@@ -43,6 +44,17 @@ class TeamDirectoryTest {
     void numOfTeams() {
         assertEquals(teamDir.getTeams().size(), teamDir.numOfTeams());
         assertEquals(teamDir.getTeams().size(), 2);
+    }
+
+    @Test
+    void superMethods() {
+        assertNotNull(teamDir.toString());
+
+        var teamDir1 = new UserDirectory();
+        var teamDir2 = new UserDirectory();
+        assertEquals(teamDir1, teamDir2);
+
+        assertEquals(teamDir2.hashCode(), teamDir1.hashCode());
     }
 
 }

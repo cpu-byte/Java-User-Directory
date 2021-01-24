@@ -5,6 +5,7 @@ import directory.elements.user.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * DirectoryBase holds the team and user directories, holding specialised methods for manipulating directory data
@@ -161,6 +162,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * Basic constructor for directory base with new user and team directories
      */
     public DirectoryBase() {
+        this.name = "Untitled Directory";
         this.userDir = new UserDirectory();
         this.teamDir = new TeamDirectory();
     }
@@ -248,19 +250,12 @@ public class DirectoryBase implements DirectoryBaseInterface {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         DirectoryBase that = (DirectoryBase) o;
-
-        if (!name.equals(that.name)) return false;
-        if (!userDir.equals(that.userDir)) return false;
-        return teamDir.equals(that.teamDir);
+        return name.equals(that.name) && userDir.equals(that.userDir) && teamDir.equals(that.teamDir);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + userDir.hashCode();
-        result = 31 * result + teamDir.hashCode();
-        return result;
+        return Objects.hash(name, userDir, teamDir);
     }
 }

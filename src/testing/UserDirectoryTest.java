@@ -1,5 +1,6 @@
 package testing;
 
+import directory.TeamDirectory;
 import directory.UserDirectory;
 import directory.elements.user.Employee;
 import directory.elements.user.Manager;
@@ -86,6 +87,17 @@ class UserDirectoryTest {
         // no longer an "empty" user directory
         assertEquals(emptyUserDir.getUsers().size(), 2);
         assertEquals(emptyUserDir.numOfUsers(), 2);
+    }
+
+    @Test
+    void superMethods() {
+        assertNotNull(userDir.toString());
+
+        var userDir1 = new TeamDirectory();
+        var userDir2 = new TeamDirectory();
+        assertEquals(userDir1, userDir2);
+
+        assertEquals(userDir2.hashCode(), userDir1.hashCode());
     }
 
 }

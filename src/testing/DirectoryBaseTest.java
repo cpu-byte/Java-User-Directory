@@ -39,7 +39,7 @@ class DirectoryBaseTest {
 
     @Test
     void initState() {
-        assertNull(unnamedDir.getName());
+        assertEquals(unnamedDir.getName(), "Untitled Directory");
         assertEquals(bareDir.getName(), dummyName);
         assertEquals(dir.getName(), dummyName);
         assertEquals(dir.getUserDir(), userDir);
@@ -161,6 +161,17 @@ class DirectoryBaseTest {
         var result2 = dir.searchTeamsByName("Admin");
         assertEquals(result2.get(0), team2);
         assertEquals(result2.size(), 1);
+    }
+
+    @Test
+    void superMethods() {
+        assertNotNull(dir.toString());
+
+        var baseDir1 = new DirectoryBase();
+        var baseDir2 = new DirectoryBase();
+        assertEquals(baseDir1, baseDir2);
+
+        assertEquals(baseDir2.hashCode(), baseDir1.hashCode());
     }
 
 }

@@ -1,5 +1,6 @@
 package testing;
 
+import directory.DirectoryBase;
 import directory.elements.Team;
 import directory.elements.user.Employee;
 import org.junit.jupiter.api.Test;
@@ -73,6 +74,17 @@ class TeamTest {
         // ...expecting the removed item to not be in the list at index 0
         // ...instead index 0 should be the non-removed item
         assertEquals(team.getMembers().get(0), emp2.getEmployeeId());
+    }
+
+    @Test
+    void superMethods() {
+        assertNotNull(team.toString());
+
+        var team1 = new Team("abc", "Analytics");
+        var team2 = new Team("abc", "Analytics");
+        assertEquals(team1, team2);
+
+        assertEquals(team2.hashCode(), team1.hashCode());
     }
 
 }
