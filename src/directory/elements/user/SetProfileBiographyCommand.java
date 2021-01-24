@@ -2,7 +2,10 @@ package directory.elements.user;
 
 import pattern.command.Command;
 
-// ConcreteCommand
+/**
+ * A concrete command for the setBiography() method belonging to the Profile class
+ * Triggered by an Invoker class, it is in relation to the command design pattern
+ */
 public class SetProfileBiographyCommand implements Command {
 
     private final Profile profile;

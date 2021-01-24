@@ -6,7 +6,7 @@ import java.util.List;
 // Invoker
 public class Invoker {
 
-    private List<Command> history = new ArrayList<>();
+    private final List<Command> history = new ArrayList<>();
 
     public void invoke(Command command) {
         this.history.add(command);

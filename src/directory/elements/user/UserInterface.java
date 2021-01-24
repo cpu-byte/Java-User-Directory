@@ -1,7 +1,5 @@
 package directory.elements.user;
 
-import directory.elements.Team;
-
 import java.util.AbstractMap;
 import java.util.Date;
 import java.util.List;

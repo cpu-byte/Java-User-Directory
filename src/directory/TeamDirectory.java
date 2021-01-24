@@ -5,10 +5,17 @@ import directory.elements.Team;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A team directory holds information on all teams that are a part of the directory
+ */
 public class TeamDirectory implements TeamDirectoryInterface {
 
     private List<Team> teams;
 
+    /**
+     * Method to return the number of teams that the team directory is current managing
+     * @return  size of the teams directory as an integer value
+     */
     public int numOfTeams() {
         return this.teams.size();
     }
@@ -16,14 +23,25 @@ public class TeamDirectory implements TeamDirectoryInterface {
 
     // standard encapsulation and override methods
 
+    /**
+     * Constructor for empty TeamDirectory object instance
+     */
     public TeamDirectory() {
         this.teams = new ArrayList<>();
     }
 
+    /**
+     * Constructor for a populated TeamDirectory object instance
+     * @param teams populated list of teams for the TeamDirectory
+     */
     public TeamDirectory(List<Team> teams) {
         this.teams = teams;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Team> getTeams() {
         return teams;
     }

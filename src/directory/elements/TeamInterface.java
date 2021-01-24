@@ -1,7 +1,5 @@
 package directory.elements;
 
-import directory.elements.user.Employee;
-
 import java.util.List;
 
 public interface TeamInterface {
