@@ -1,6 +1,5 @@
 package testing;
 
-import directory.DirectoryBase;
 import directory.elements.user.Profile;
 import org.junit.jupiter.api.Test;
 

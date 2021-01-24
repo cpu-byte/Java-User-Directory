@@ -1,6 +1,5 @@
 package testing;
 
-import directory.DirectoryBase;
 import directory.elements.Team;
 import directory.elements.user.Employee;
 import org.junit.jupiter.api.Test;
