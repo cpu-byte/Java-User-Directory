@@ -6,16 +6,27 @@ import directory.elements.user.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DirectoryBase holds the team and user directories, holding specialised methods for manipulating directory data
+ */
 public class DirectoryBase implements DirectoryBaseInterface {
 
     private String name;
     private UserDirectory userDir;
     private TeamDirectory teamDir;
 
+    /**
+     * Add a user to the user directory
+     * @param user  user to add into the user directory
+     */
     public void addUser(Employee user) {
         this.userDir.getUsers().add(user);
     }
 
+    /**
+     * Remove a user from the user directory
+     * @param user  user to remove from the user directory
+     */
     public void removeUser(Employee user) {
         // all instances of the user in team's member list will be removed
         for (Team team : this.teamDir.getTeams())
@@ -24,10 +35,18 @@ public class DirectoryBase implements DirectoryBaseInterface {
         this.userDir.getUsers().remove(user);
     }
 
+    /**
+     * Team to add to the team directory
+     * @param team  team to add into the team directory
+     */
     public void addTeam(Team team) {
         this.teamDir.getTeams().add(team);
     }
 
+    /**
+     * Team to remove from the team directory
+     * @param team  team to remove from the team directory
+     */
     public void removeTeam(Team team) {
         // all instances of the team in the user's associated teams list will be removed
         for (Employee emp : this.userDir.getUsers())
@@ -36,6 +55,12 @@ public class DirectoryBase implements DirectoryBaseInterface {
         this.teamDir.getTeams().remove(team);
     }
 
+    /**
+     * Add a user to a team (if non-existent, add team to user's associated teams, and add user to team's members)
+     * @param team  team subject to having a new member
+     * @param user  user subject to having a new associated team
+     * @return      true/false value for successful/unsuccessful operation (false: parameter user or team not found)
+     */
     public boolean addUserToTeam(Team team, Employee user) {
         var userIndex = this.userDir.getUsers().indexOf(user);
         var teamIndex = this.teamDir.getTeams().indexOf(team);
@@ -55,6 +80,12 @@ public class DirectoryBase implements DirectoryBaseInterface {
         return true;
     }
 
+    /**
+     * Remove a user from a team (if existent remove team from user's associated teams, remove user from team's members)
+     * @param team  team subject to having a member removed
+     * @param user  user subject to having a associated team removed
+     * @return      true/false value for successful/unsuccessful operation (false: parameter user or team found)
+     */
     public boolean removeUserFromTeam(Team team, Employee user) {
         var userIndex = this.userDir.getUsers().indexOf(user);
         var teamIndex = this.teamDir.getTeams().indexOf(team);
@@ -74,6 +105,11 @@ public class DirectoryBase implements DirectoryBaseInterface {
         return true;
     }
 
+    /**
+     * Return the Team IDs of all the associated teams of the employee
+     * @param employee  find their associated teams
+     * @return          list of ids of the team
+     */
     public List<String> employeeTeams(Employee employee) {
         var employeeTeams = new ArrayList<String>();
 
@@ -85,6 +121,11 @@ public class DirectoryBase implements DirectoryBaseInterface {
         return employeeTeams;
     }
 
+    /**
+     * Return the Employee ID's of all members of a team
+     * @param team  find their members
+     * @return      list of id's of the members
+     */
     public List<String> employeesInTeam(Team team) {
         var employeesInTeam = new ArrayList<String>();
 
@@ -95,10 +136,20 @@ public class DirectoryBase implements DirectoryBaseInterface {
         return employeesInTeam;
     }
 
+    /**
+     * Search employees by name
+     * @param searchTerm    term to search against all employees
+     * @return              list of results (no results: empty list)
+     */
     public List<Employee> searchEmployeesByName(String searchTerm) {
         return Search.employeesByName(this.userDir.getUsers(), searchTerm);
     }
 
+    /**
+     * Search teams by name
+     * @param searchTerm    term to search against all teams
+     * @return              list of teams (no results: empty list)
+     */
     public List<Team> searchTeamsByName(String searchTerm) {
         return Search.teamsByName(this.teamDir.getTeams(), searchTerm);
     }
@@ -106,43 +157,80 @@ public class DirectoryBase implements DirectoryBaseInterface {
 
     // standard encapsulation and override methods
 
+    /**
+     * Basic constructor for directory base with new user and team directories
+     */
     public DirectoryBase() {
         this.userDir = new UserDirectory();
         this.teamDir = new TeamDirectory();
     }
 
+    /**
+     * Constructor for directory base with name and new user and team directories
+     * @param name  name of the directory, i.e. "HK System"
+     */
     public DirectoryBase(String name) {
         this.name = name;
         this.userDir = new UserDirectory();
         this.teamDir = new TeamDirectory();
     }
 
+    /**
+     * Complete constructor for directory base with specification for all fields
+     * @param name              name of the directory, i.e. "HK System"
+     * @param userDirectory     instance of UserDirectory
+     * @param teamDirectory     instance of TeamDirectory
+     */
     public DirectoryBase(String name, UserDirectory userDirectory, TeamDirectory teamDirectory) {
         this.name = name;
         this.userDir = userDirectory;
         this.teamDir = teamDirectory;
     }
 
+    /**
+     * Getter method for the base directory name
+     * @return  current name of the base directory
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Setter method for the base directory name
+     * @param name  new name of the base directory
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Getter method for the user directory field
+     * @return  current user directory
+     */
     public UserDirectory getUserDir() {
         return userDir;
     }
 
+    /**
+     * Setter method for the user directory field
+     * @param userDir   new user directory
+     */
     public void setUserDir(UserDirectory userDir) {
         this.userDir = userDir;
     }
 
+    /**
+     * Getter method for the team directory field
+     * @return  current team directory
+     */
     public TeamDirectory getTeamDir() {
         return teamDir;
     }
 
+    /**
+     * Setter method for the team directory field
+     * @param teamDir   new team directory
+     */
     public void setTeamDir(TeamDirectory teamDir) {
         this.teamDir = teamDir;
     }
