@@ -114,10 +114,10 @@ public class DirectoryBase implements DirectoryBaseInterface {
     public List<String> employeeTeams(Employee employee) {
         var employeeTeams = new ArrayList<String>();
 
-        for (Team team : this.teamDir.getTeams()) {
+        // for each team, see if the relevant employee is a member
+        for (Team team : this.teamDir.getTeams())
             if (team.getMembers().contains(employee.getEmployeeId()))
                 employeeTeams.add(team.getTeamId());
-        }
 
         return employeeTeams;
     }
@@ -130,6 +130,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
     public List<String> employeesInTeam(Team team) {
         var employeesInTeam = new ArrayList<String>();
 
+        // for each employee, see if the relevant team is associated
         for (Employee employee : this.userDir.getUsers())
             if (team.getMembers().contains(employee.getEmployeeId()))
                 employeesInTeam.add(employee.getEmployeeId());

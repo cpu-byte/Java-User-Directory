@@ -23,12 +23,13 @@ public class UserDirectory implements UserDirectoryInterface {
     public Employee login(String email, String password) {
         Employee userFound = null;
 
+        // search for a user with those specific details
         for (Employee user : users)
             if (user.getEmail().equals(email) && user.getPassword().equals(password))
                 userFound = user;
 
+        // if user found, make then online
         if (userFound != null) userFound.setOnline();
-
 
         return userFound;
     }
@@ -49,6 +50,7 @@ public class UserDirectory implements UserDirectoryInterface {
     public Profile profileById(String employeeId) {
         Profile foundProfile = null;
 
+        // compare all user's id with the given id in the parameter
         for (Employee employee : users)
             if (employee.getEmployeeId().equals(employeeId))
                 foundProfile = employee.getProfile();

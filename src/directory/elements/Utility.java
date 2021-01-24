@@ -12,6 +12,7 @@ public abstract class Utility {
      * @return  a generated UUID value
      */
     public static String uuidGenerate() {
+        // using the java.util.UUID's randomUUID()
         return UUID.randomUUID().toString();
     }
 
