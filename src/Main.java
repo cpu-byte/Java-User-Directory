@@ -1,11 +1,7 @@
 import directory.DirectoryBase;
-import directory.TeamDirectory;
-import directory.UserDirectory;
 import directory.elements.Team;
 import directory.elements.user.Employee;
 import directory.elements.user.Manager;
-
-import java.util.List;
 
 public class Main {
 
