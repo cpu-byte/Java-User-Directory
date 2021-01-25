@@ -1,7 +1,9 @@
 package testing;
 
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 import directory.elements.user.Employee;
+import directory.elements.user.UserInterface;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,12 +17,12 @@ class TeamTest {
     // supporting variables
     final private String dummyId = "a1b2c3";
     final private String dummyName = "Analytics";
-    final private Employee emp1 = new Employee("name1", "email1", "password1");
-    final private Employee emp2 = new Employee("name2", "email2", "password2");
-    final private List<Employee> employees = new ArrayList<>(Arrays.asList(emp1, emp2));
+    final private UserInterface emp1 = new Employee("name1", "email1", "password1");
+    final private UserInterface emp2 = new Employee("name2", "email2", "password2");
+    final private List<UserInterface> employees = new ArrayList<>(Arrays.asList(emp1, emp2));
 
-    final private Team team = new Team(dummyId, dummyName);
-    final private Team teamIdGen = new Team(dummyName);
+    final private TeamInterface team = new Team(dummyId, dummyName);
+    final private TeamInterface teamIdGen = new Team(dummyName);
 
     @Test
     void generatedEmployeeId() {
@@ -46,7 +48,7 @@ class TeamTest {
     void numOfMembers() {
         // after adding some employees as members, check size
         var memberIds = new ArrayList<String>();
-        for (Employee emp : employees) memberIds.add(emp.getEmployeeId());
+        for (UserInterface emp : employees) memberIds.add(emp.getEmployeeId());
         team.setMembers(memberIds);
         assertEquals(team.getMembers().size(), team.numOfMembers());
         assertEquals(team.getMembers().size(), 2);
@@ -79,8 +81,8 @@ class TeamTest {
     void superMethods() {
         assertNotNull(team.toString());
 
-        var team1 = new Team("abc", "Analytics");
-        var team2 = new Team("abc", "Analytics");
+        TeamInterface team1 = new Team("abc", "Analytics");
+        TeamInterface team2 = new Team("abc", "Analytics");
         assertEquals(team1, team2);
 
         assertEquals(team2.hashCode(), team1.hashCode());

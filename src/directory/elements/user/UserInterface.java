@@ -19,8 +19,8 @@ public interface UserInterface {
     void setEmail(String email);
     String getPassword();
     void setPassword(String password);
-    Profile getProfile();
-    void setProfile(Profile profile);
+    ProfileInterface getProfile();
+    void setProfile(ProfileInterface profile);
     Status getStatus();
     void setStatus(Status status);
     List<String> getAssociatedTeams();

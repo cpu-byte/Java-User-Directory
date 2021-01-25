@@ -1,22 +1,24 @@
 package directory;
 
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 import directory.elements.user.Employee;
+import directory.elements.user.UserInterface;
 
 import java.util.List;
 
 public interface DirectoryBaseInterface {
 
-    void addUser(Employee user);
-    void removeUser(Employee user);
-    void addTeam(Team team);
-    void removeTeam(Team team);
-    boolean addUserToTeam(Team team, Employee user);
-    boolean removeUserFromTeam(Team team, Employee user);
-    List<String> employeeTeams(Employee employee);
-    List<String> employeesInTeam(Team team);
-    List<Employee> searchEmployeesByName(String searchTerm);
-    List<Team> searchTeamsByName(String searchTerm);
+    void addUser(UserInterface user);
+    void removeUser(UserInterface user);
+    void addTeam(TeamInterface team);
+    void removeTeam(TeamInterface team);
+    boolean addUserToTeam(TeamInterface team, UserInterface user);
+    boolean removeUserFromTeam(TeamInterface team, UserInterface user);
+    List<String> employeeTeams(UserInterface employee);
+    List<String> employeesInTeam(TeamInterface team);
+    List<UserInterface> searchEmployeesByName(String searchTerm);
+    List<TeamInterface> searchTeamsByName(String searchTerm);
 
     // standard encapsulation and override methods
     String getName();

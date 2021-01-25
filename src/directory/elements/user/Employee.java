@@ -17,7 +17,7 @@ public class Employee implements UserInterface {
     private Status status = Status.OFFLINE;
     // statusHistory holds all timestamps and then changed status value
     private List<AbstractMap.SimpleEntry<Date, Status>> statusHistory = new ArrayList<>();
-    private Profile profile = new Profile("No info provided.");
+    private ProfileInterface profile = new Profile("No info provided.");
 
     /**
      * Add an associated team ID (string) into the list of associated teams fields
@@ -143,7 +143,7 @@ public class Employee implements UserInterface {
      * Getter method for the profile of the employee
      * @return  current employee profile value
      */
-    public Profile getProfile() {
+    public ProfileInterface getProfile() {
         return profile;
     }
 
@@ -151,7 +151,7 @@ public class Employee implements UserInterface {
      * Setter method for the profile of the employee
      * @param profile   new employee profile value
      */
-    public void setProfile(Profile profile) {
+    public void setProfile(ProfileInterface profile) {
         this.profile = profile;
     }
 

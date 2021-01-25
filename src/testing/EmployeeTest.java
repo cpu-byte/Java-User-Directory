@@ -1,9 +1,11 @@
 package testing;
 
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 import directory.elements.user.Employee;
 import directory.elements.user.Profile;
 import directory.elements.user.Status;
+import directory.elements.user.UserInterface;
 import org.junit.jupiter.api.Test;
 
 import java.util.AbstractMap;
@@ -20,11 +22,11 @@ class EmployeeTest {
     final private String dummyName = "John Doe";
     final private String dummyEmail = "abc@mail.com";
     final private String dummyPassword = "myPassword";
-    final private Team team1 = new Team("Analytics");
-    final private Team team2 = new Team("Data Science");
+    final private TeamInterface team1 = new Team("Analytics");
+    final private TeamInterface team2 = new Team("Data Science");
 
-    final private Employee emp = new Employee(dummyId, dummyName, dummyEmail, dummyPassword);
-    final private Employee empIdGen = new Employee(dummyName, dummyEmail, dummyPassword);
+    final private UserInterface emp = new Employee(dummyId, dummyName, dummyEmail, dummyPassword);
+    final private UserInterface empIdGen = new Employee(dummyName, dummyEmail, dummyPassword);
 
     @Test
     void generatedEmployeeId() {
@@ -149,8 +151,8 @@ class EmployeeTest {
     void superMethods() {
         assertNotNull(emp.toString());
 
-        var emp1 = new Employee("a", "b", "c", "d");
-        var emp2 = new Employee("a", "b", "c", "d");
+        UserInterface emp1 = new Employee("a", "b", "c", "d");
+        UserInterface emp2 = new Employee("a", "b", "c", "d");
         assertEquals(emp1, emp2);
 
         assertEquals(emp2.hashCode(), emp1.hashCode());

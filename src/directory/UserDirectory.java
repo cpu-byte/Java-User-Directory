@@ -1,8 +1,6 @@
 package directory;
 
-import directory.elements.user.Employee;
-import directory.elements.user.Manager;
-import directory.elements.user.Profile;
+import directory.elements.user.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ import java.util.List;
  */
 public class UserDirectory implements UserDirectoryInterface {
 
-    private List<Employee> users;
+    private List<UserInterface> users;
 
     /**
      * Method to login a user when provided the email and password
@@ -20,11 +18,11 @@ public class UserDirectory implements UserDirectoryInterface {
      * @param password  password of an existing user that belongs in the user directory
      * @return          upon login: the employee/manager object, invalid credentials will return null value
      */
-    public Employee login(String email, String password) {
-        Employee userFound = null;
+    public UserInterface login(String email, String password) {
+        UserInterface userFound = null;
 
         // search for a user with those specific details
-        for (Employee user : users)
+        for (UserInterface user : users)
             if (user.getEmail().equals(email) && user.getPassword().equals(password))
                 userFound = user;
 
@@ -38,7 +36,7 @@ public class UserDirectory implements UserDirectoryInterface {
      * Method to logout a user given the user object
      * @param user  object of the user (employee/manager) that should be logged out
      */
-    public void logout(Employee user) {
+    public void logout(UserInterface user) {
         user.setOffline();
     }
 
@@ -47,11 +45,11 @@ public class UserDirectory implements UserDirectoryInterface {
      * @param employeeId    id of the employee/manager that you wish to get the profile of
      * @return              if found existing ID: the profile of the user, non-found: return null
      */
-    public Profile profileById(String employeeId) {
-        Profile foundProfile = null;
+    public ProfileInterface profileById(String employeeId) {
+        ProfileInterface foundProfile = null;
 
         // compare all user's id with the given id in the parameter
-        for (Employee employee : users)
+        for (UserInterface employee : users)
             if (employee.getEmployeeId().equals(employeeId))
                 foundProfile = employee.getProfile();
 
@@ -65,7 +63,7 @@ public class UserDirectory implements UserDirectoryInterface {
      * @param newBio    new biography that will be applied to the Profile of the user
      * @return          true: successfully updated, false: invalid permission (author not authorised)
      */
-    public boolean updateUserBio(Employee author, Employee target, String newBio) {
+    public boolean updateUserBio(UserInterface author, UserInterface target, String newBio) {
         if (author instanceof Manager) target.setProfile(new Profile(newBio));
         else return false;
         return true;
@@ -93,7 +91,7 @@ public class UserDirectory implements UserDirectoryInterface {
      * Constructor for a populated UserDirectory object instance
      * @param users populated list of users for the UserDirectory
      */
-    public UserDirectory(List<Employee> users) {
+    public UserDirectory(List<UserInterface> users) {
         this.users = users;
     }
 
@@ -101,7 +99,7 @@ public class UserDirectory implements UserDirectoryInterface {
      * Getter method for the UserDirectory's users field
      * @return  current list of users
      */
-    public List<Employee> getUsers() {
+    public List<UserInterface> getUsers() {
         return users;
     }
 
@@ -109,14 +107,14 @@ public class UserDirectory implements UserDirectoryInterface {
      * Setter method for the UserDirectory's users field
      * @param users new list of users
      */
-    public void setUsers(List<Employee> users) {
+    public void setUsers(List<UserInterface> users) {
         this.users = users;
     }
 
     @Override
     public String toString() {
         List<String> stringUsers = new ArrayList<>();
-        for (Employee employee : users) stringUsers.add("\n\t" + employee.toString());
+        for (UserInterface employee : users) stringUsers.add("\n\t" + employee.toString());
 
         return "EmployeeDirectory{" +
                 "users=" + stringUsers +

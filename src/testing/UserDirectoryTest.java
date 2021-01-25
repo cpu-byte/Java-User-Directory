@@ -1,10 +1,13 @@
 package testing;
 
 import directory.TeamDirectory;
+import directory.TeamDirectoryInterface;
 import directory.UserDirectory;
+import directory.UserDirectoryInterface;
 import directory.elements.user.Employee;
 import directory.elements.user.Manager;
 import directory.elements.user.Status;
+import directory.elements.user.UserInterface;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserDirectoryTest {
 
-    final private Employee empA = new Employee("nameA", "emailA", "passwordA");
-    final private Employee empB = new Employee("nameB", "emailB", "passwordB");
-    final private Manager mgr = new Manager("nameM", "emailM", "passwordM");
-    final private List<Employee> emps = new ArrayList<>(Arrays.asList(empA, empB));
+    final private UserInterface empA = new Employee("nameA", "emailA", "passwordA");
+    final private UserInterface empB = new Employee("nameB", "emailB", "passwordB");
+    final private UserInterface mgr = new Manager("nameM", "emailM", "passwordM");
+    final private List<UserInterface> emps = new ArrayList<>(Arrays.asList(empA, empB));
 
-    final private UserDirectory emptyUserDir = new UserDirectory();
-    final private UserDirectory userDir = new UserDirectory(emps);
+    final private UserDirectoryInterface emptyUserDir = new UserDirectory();
+    final private UserDirectoryInterface userDir = new UserDirectory(emps);
 
     @Test
     void initState() {
@@ -93,36 +96,11 @@ class UserDirectoryTest {
     void superMethods() {
         assertNotNull(userDir.toString());
 
-        var userDir1 = new TeamDirectory();
-        var userDir2 = new TeamDirectory();
+        TeamDirectoryInterface userDir1 = new TeamDirectory();
+        TeamDirectoryInterface userDir2 = new TeamDirectory();
         assertEquals(userDir1, userDir2);
 
         assertEquals(userDir2.hashCode(), userDir1.hashCode());
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

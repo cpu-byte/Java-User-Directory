@@ -1,21 +1,21 @@
 package directory;
 
-import directory.elements.user.Employee;
-import directory.elements.user.Profile;
+import directory.elements.user.ProfileInterface;
+import directory.elements.user.UserInterface;
 
 import java.util.List;
 
 public interface UserDirectoryInterface {
 
-    Employee login(String email, String password);
-    void logout(Employee user);
-    Profile profileById(String employeeId);
-    boolean updateUserBio(Employee author, Employee target, String newBio);
+    UserInterface login(String email, String password);
+    void logout(UserInterface user);
+    ProfileInterface profileById(String employeeId);
+    boolean updateUserBio(UserInterface author, UserInterface target, String newBio);
     int numOfUsers();
 
     // standard encapsulation and override methods
-    List<Employee> getUsers();
-    void setUsers(List<Employee> users);
+    List<UserInterface> getUsers();
+    void setUsers(List<UserInterface> users);
     String toString();
     boolean equals(Object o);
     int hashCode();

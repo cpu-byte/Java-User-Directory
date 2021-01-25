@@ -1,6 +1,7 @@
 package directory;
 
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class TeamDirectory implements TeamDirectoryInterface {
 
-    private List<Team> teams;
+    private List<TeamInterface> teams;
 
     /**
      * Method to return the number of teams that the team directory is current managing
@@ -34,7 +35,7 @@ public class TeamDirectory implements TeamDirectoryInterface {
      * Constructor for a populated TeamDirectory object instance
      * @param teams populated list of teams for the TeamDirectory
      */
-    public TeamDirectory(List<Team> teams) {
+    public TeamDirectory(List<TeamInterface> teams) {
         this.teams = teams;
     }
 
@@ -42,7 +43,7 @@ public class TeamDirectory implements TeamDirectoryInterface {
      * Getter method for the TeamDirectory teams field
      * @return  current list of teams in the teams directory
      */
-    public List<Team> getTeams() {
+    public List<TeamInterface> getTeams() {
         return teams;
     }
 
@@ -50,14 +51,14 @@ public class TeamDirectory implements TeamDirectoryInterface {
      * Setter method for the TeamDirectory teams field
      * @param teams new list of teams in the teams directory
      */
-    public void setTeams(List<Team> teams) {
+    public void setTeams(List<TeamInterface> teams) {
         this.teams = teams;
     }
 
     @Override
     public String toString() {
         List<String> stringTeams = new ArrayList<>();
-        for (Team team : this.teams) stringTeams.add("\n\t" + team.toString());
+        for (TeamInterface team : this.teams) stringTeams.add("\n\t" + team.toString());
 
         return "TeamDirectory{" +
                 "teams=" + stringTeams +

@@ -1,7 +1,9 @@
 package directory;
 
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 import directory.elements.user.Employee;
+import directory.elements.user.UserInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * Add a user to the user directory
      * @param user  user to add into the user directory
      */
-    public void addUser(Employee user) {
+    public void addUser(UserInterface user) {
         this.userDir.getUsers().add(user);
     }
 
@@ -28,9 +30,9 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * Remove a user from the user directory
      * @param user  user to remove from the user directory
      */
-    public void removeUser(Employee user) {
+    public void removeUser(UserInterface user) {
         // all instances of the user in team's member list will be removed
-        for (Team team : this.teamDir.getTeams())
+        for (TeamInterface team : this.teamDir.getTeams())
             if (team.getMembers().contains(user.getEmployeeId())) team.removeMember(user.getEmployeeId());
 
         this.userDir.getUsers().remove(user);
@@ -40,7 +42,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * Team to add to the team directory
      * @param team  team to add into the team directory
      */
-    public void addTeam(Team team) {
+    public void addTeam(TeamInterface team) {
         this.teamDir.getTeams().add(team);
     }
 
@@ -48,9 +50,9 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * Team to remove from the team directory
      * @param team  team to remove from the team directory
      */
-    public void removeTeam(Team team) {
+    public void removeTeam(TeamInterface team) {
         // all instances of the team in the user's associated teams list will be removed
-        for (Employee emp : this.userDir.getUsers())
+        for (UserInterface emp : this.userDir.getUsers())
             if (emp.getAssociatedTeams().contains(team.getTeamId())) emp.removeAssociatedTeam(team.getTeamId());
 
         this.teamDir.getTeams().remove(team);
@@ -62,7 +64,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * @param user  user subject to having a new associated team
      * @return      true/false value for successful/unsuccessful operation (false: parameter user or team not found)
      */
-    public boolean addUserToTeam(Team team, Employee user) {
+    public boolean addUserToTeam(TeamInterface team, UserInterface user) {
         var userIndex = this.userDir.getUsers().indexOf(user);
         var teamIndex = this.teamDir.getTeams().indexOf(team);
 
@@ -87,7 +89,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * @param user  user subject to having a associated team removed
      * @return      true/false value for successful/unsuccessful operation (false: parameter user or team found)
      */
-    public boolean removeUserFromTeam(Team team, Employee user) {
+    public boolean removeUserFromTeam(TeamInterface team, UserInterface user) {
         var userIndex = this.userDir.getUsers().indexOf(user);
         var teamIndex = this.teamDir.getTeams().indexOf(team);
 
@@ -111,11 +113,11 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * @param employee  find their associated teams
      * @return          list of ids of the team
      */
-    public List<String> employeeTeams(Employee employee) {
+    public List<String> employeeTeams(UserInterface employee) {
         var employeeTeams = new ArrayList<String>();
 
         // for each team, see if the relevant employee is a member
-        for (Team team : this.teamDir.getTeams())
+        for (TeamInterface team : this.teamDir.getTeams())
             if (team.getMembers().contains(employee.getEmployeeId()))
                 employeeTeams.add(team.getTeamId());
 
@@ -127,11 +129,11 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * @param team  find their members
      * @return      list of id's of the members
      */
-    public List<String> employeesInTeam(Team team) {
+    public List<String> employeesInTeam(TeamInterface team) {
         var employeesInTeam = new ArrayList<String>();
 
         // for each employee, see if the relevant team is associated
-        for (Employee employee : this.userDir.getUsers())
+        for (UserInterface employee : this.userDir.getUsers())
             if (team.getMembers().contains(employee.getEmployeeId()))
                 employeesInTeam.add(employee.getEmployeeId());
 
@@ -143,7 +145,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * @param searchTerm    term to search against all employees
      * @return              list of results (no results: empty list)
      */
-    public List<Employee> searchEmployeesByName(String searchTerm) {
+    public List<UserInterface> searchEmployeesByName(String searchTerm) {
         return Search.employeesByName(this.userDir.getUsers(), searchTerm);
     }
 
@@ -152,7 +154,7 @@ public class DirectoryBase implements DirectoryBaseInterface {
      * @param searchTerm    term to search against all teams
      * @return              list of teams (no results: empty list)
      */
-    public List<Team> searchTeamsByName(String searchTerm) {
+    public List<TeamInterface> searchTeamsByName(String searchTerm) {
         return Search.teamsByName(this.teamDir.getTeams(), searchTerm);
     }
 

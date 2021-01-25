@@ -1,8 +1,11 @@
 package testing;
 
 import directory.TeamDirectory;
+import directory.TeamDirectoryInterface;
 import directory.UserDirectory;
+import directory.UserDirectoryInterface;
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,12 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class TeamDirectoryTest {
 
     // supporting variables
-    final private Team teamA = new Team("Analytics");
-    final private Team teamB = new Team("Marketing");
-    final private List<Team> teams = new ArrayList<>(Arrays.asList(teamA, teamB));
+    final private TeamInterface teamA = new Team("Analytics");
+    final private TeamInterface teamB = new Team("Marketing");
+    final private List<TeamInterface> teams = new ArrayList<>(Arrays.asList(teamA, teamB));
 
-    final private TeamDirectory emptyTeamDir = new TeamDirectory();
-    final private TeamDirectory teamDir = new TeamDirectory(teams);
+    final private TeamDirectoryInterface emptyTeamDir = new TeamDirectory();
+    final private TeamDirectoryInterface teamDir = new TeamDirectory(teams);
 
     @Test
     void initState() {
@@ -50,8 +53,8 @@ class TeamDirectoryTest {
     void superMethods() {
         assertNotNull(teamDir.toString());
 
-        var teamDir1 = new UserDirectory();
-        var teamDir2 = new UserDirectory();
+        UserDirectoryInterface teamDir1 = new UserDirectory();
+        UserDirectoryInterface teamDir2 = new UserDirectory();
         assertEquals(teamDir1, teamDir2);
 
         assertEquals(teamDir2.hashCode(), teamDir1.hashCode());

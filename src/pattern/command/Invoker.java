@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Invoker
-public class Invoker {
+public class Invoker implements InvokerInterface {
 
     private final List<Command> history = new ArrayList<>();
 

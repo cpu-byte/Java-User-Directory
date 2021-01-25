@@ -8,10 +8,10 @@ import pattern.command.Command;
  */
 public class SetProfileBiographyCommand implements Command {
 
-    private final Profile profile;
+    private final ProfileInterface profile;
     private final String newBiography;
 
-    public SetProfileBiographyCommand(Profile profile, String newBiography) {
+    public SetProfileBiographyCommand(ProfileInterface profile, String newBiography) {
         this.profile = profile;
         this.newBiography = newBiography;
     }

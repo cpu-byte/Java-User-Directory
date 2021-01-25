@@ -1,26 +1,29 @@
 import directory.DirectoryBase;
+import directory.DirectoryBaseInterface;
 import directory.elements.Team;
+import directory.elements.TeamInterface;
 import directory.elements.user.Employee;
 import directory.elements.user.Manager;
+import directory.elements.user.UserInterface;
 
 public class Main {
 
     public static void main(String[] args) {
 
         // creating directory
-        var hksys = new DirectoryBase("Hill and Knowlton");
+        DirectoryBaseInterface hksys = new DirectoryBase("Hill and Knowlton");
 
         // creating teams
-        var team1 = new Team("Analytics");
-        var team2 = new Team("Marketing");
+        TeamInterface team1 = new Team("Analytics");
+        TeamInterface team2 = new Team("Marketing");
 
         // creating users
-        var user1 = new Manager( "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
-        var user2 = new Employee("Rachel Green", "rachel.green@mail.com", "SecretPhrase");
-        var user3 = new Employee(  "Ross Geller", "ross.geller@mail.com", "123456");
-        var user4 = new Employee( "Joey Tribbiani", "joey.tribbinai@mail.com", "seven_forty_one");
-        var user5 = new Manager( "Phoebe Buffay", "phoebe.buffay@mail.com", "newYorkCity");
-        var user6 = new Employee( "Monica Geller", "monica.geller@mail.com", "centralPerk");
+        UserInterface user1 = new Manager( "Chandler Bing", "chandler.bing@mail.com", "MyPassword");
+        UserInterface user2 = new Employee("Rachel Green", "rachel.green@mail.com", "SecretPhrase");
+        UserInterface user3 = new Employee(  "Ross Geller", "ross.geller@mail.com", "123456");
+        UserInterface user4 = new Employee( "Joey Tribbiani", "joey.tribbinai@mail.com", "seven_forty_one");
+        UserInterface user5 = new Manager( "Phoebe Buffay", "phoebe.buffay@mail.com", "newYorkCity");
+        UserInterface user6 = new Employee( "Monica Geller", "monica.geller@mail.com", "centralPerk");
 
         // adding 2 teams
         hksys.addTeam(team1);

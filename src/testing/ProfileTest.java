@@ -1,6 +1,7 @@
 package testing;
 
 import directory.elements.user.Profile;
+import directory.elements.user.ProfileInterface;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProfileTest {
 
     final private String basicBio = "No info provided.";
-    final private Profile profile = new Profile(basicBio);
+    final private ProfileInterface profile = new Profile(basicBio);
 
     @Test
     void initState() {
@@ -26,8 +27,8 @@ class ProfileTest {
     void superMethods() {
         assertNotNull(profile.toString());
 
-        var profile1 = new Profile("No info.");
-        var profile2 = new Profile("No info.");
+        ProfileInterface profile1 = new Profile("No info.");
+        ProfileInterface profile2 = new Profile("No info.");
         assertEquals(profile1, profile2);
 
         assertEquals(profile2.hashCode(), profile1.hashCode());

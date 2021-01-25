@@ -1,7 +1,7 @@
 package directory;
 
-import directory.elements.Team;
-import directory.elements.user.Employee;
+import directory.elements.TeamInterface;
+import directory.elements.user.UserInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,12 @@ public abstract class Search {
      * @param searchTerm    search term
      * @return              list of employees (empty if no matches)
      */
-    public static List<Employee> employeesByName(List<Employee> employees, String searchTerm) {
+    public static List<UserInterface> employeesByName(List<UserInterface> employees, String searchTerm) {
         final String term = searchTerm.toLowerCase();
-        var matchingResults = new ArrayList<Employee>();
+        ArrayList<UserInterface> matchingResults = new ArrayList<>();
 
         // for every employee, lowercase, split the name, and check each against search term
-        for (Employee employee : employees)
+        for (UserInterface employee : employees)
             for (String name : employee.getName().toLowerCase().split(" "))
                 // for every match, add employee to matchingResults list
                 if (name.equals(term)) matchingResults.add(employee);
@@ -36,12 +36,12 @@ public abstract class Search {
      * @param searchTerm    search term
      * @return              list of teams (empty if no matches)
      */
-    public static List<Team> teamsByName(List<Team> teams, String searchTerm) {
+    public static List<TeamInterface> teamsByName(List<TeamInterface> teams, String searchTerm) {
         final String term = searchTerm.toLowerCase();
-        var matchingResults = new ArrayList<Team>();
+        ArrayList<TeamInterface> matchingResults = new ArrayList<>();
 
         // for every team, lowercase, split the name, and check each against search term
-        for (Team team : teams)
+        for (TeamInterface team : teams)
             for (String teamNameSegment : team.getName().toLowerCase().split(" "))
                 // for every match, add team to matchingResults list
                 if (teamNameSegment.equals(term)) matchingResults.add(team);

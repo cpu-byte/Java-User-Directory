@@ -1,9 +1,11 @@
 package testing;
 
 import directory.elements.user.Profile;
+import directory.elements.user.ProfileInterface;
 import directory.elements.user.SetProfileBiographyCommand;
 import org.junit.jupiter.api.Test;
 import pattern.command.Invoker;
+import pattern.command.InvokerInterface;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,8 +14,8 @@ class SetProfileBiographyCommandTest {
     @Test
     void lifeCycle() {
         // new profile and invoker setup
-        var profile = new Profile("Hello world.");
-        var profileInvoker = new Invoker();
+        ProfileInterface profile = new Profile("Hello world.");
+        InvokerInterface profileInvoker = new Invoker();
 
         // update no. 1
         final var bioUpdateText1 = "Welcome to my profile!";
