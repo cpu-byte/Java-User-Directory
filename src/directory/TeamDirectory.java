@@ -1,6 +1,5 @@
 package directory;
 
-import directory.elements.Team;
 import directory.elements.TeamInterface;
 
 import java.util.ArrayList;

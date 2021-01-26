@@ -1,8 +1,6 @@
 package directory;
 
-import directory.elements.Team;
 import directory.elements.TeamInterface;
-import directory.elements.user.Employee;
 import directory.elements.user.UserInterface;
 
 import java.util.ArrayList;
