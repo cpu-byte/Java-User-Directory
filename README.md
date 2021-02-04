@@ -1,5 +1,5 @@
 # Java User Directory
-Code in directory contains the domain solution for a user directory.
+Java domain implementation of a user directory with teams.
 
 ## Notes
 - This repository contains the code domain.
