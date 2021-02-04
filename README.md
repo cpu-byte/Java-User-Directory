@@ -9,11 +9,11 @@ Code in directory contains the domain solution for a user directory.
 - Main issues are discussed in the Further Development section.
 - The class diagram for this project can be seen below.
 
-![Class Diagram](Class Diagram.png)
+![Class Diagram](Class%20Diagram.png)
 
 ## Running
-1. Load the Java project into IDE of choice with `Java JDK` version `15` or higher*.
-2. Run the Main class main() method in `/src/` folder for a basic domain demonstration.
+1. Load the Java project into IDE of choice with `Java JDK` version `15` or higher* and `JUnit` version `5` or higher.
+2. Run the `Main` class `main()` method in `/src/` folder for a basic domain demonstration.
 3. Run the `/src/testing/` folder for `JUnit Testing`.
 4. Running step 3 with coverage should yield `100%` class-method-line coverage.
 
